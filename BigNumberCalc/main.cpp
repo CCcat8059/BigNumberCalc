@@ -1,7 +1,11 @@
 #include <iostream>
 
+#include "Integer.h"
+
+using namespace std;
 int main(int argc, char* argv[])
 {
-	std::cout << "hello world";
+	Integer a("-101561.512");
+	cout << a.data << ' ' << a.sign;
 	return 0;
 }
