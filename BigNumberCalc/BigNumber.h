@@ -2,11 +2,19 @@
 #include <string>
 class BigNumber
 {
-public:
-	bool sign;
-	std::string data;
+private:
+	std::string numerator;
 
+	// if denominator is 1 -> int
+	std::string denominator;
+
+	// false -> positive, true -> negative
+	bool sign;
+
+	// false -> float, true -> int
+	bool isInt;
+public:
 	BigNumber();
-	BigNumber(std::string);
+	BigNumber(const std::string);
 };
 

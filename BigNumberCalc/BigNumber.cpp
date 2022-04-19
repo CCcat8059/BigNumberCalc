@@ -2,23 +2,42 @@
 
 BigNumber::BigNumber()
 {
+	// initial value = 0 (int)
 	sign = false;
-	data = "";
+	isInt = true;
+	numerator = "0";
+	denominator = "1";
 }
 
-BigNumber::BigNumber(std::string num)
+BigNumber::BigNumber(const std::string num)
 {
+	// avoid empty string
 	if (num.empty())
 	{
 		sign = false;
-		data = "";
+		isInt = true;
+		numerator = "0";
+		denominator = "1";
 	}
 	else
 	{
 		sign = (num[0] == '-');
-		if (sign)
-			data = num.substr(1);
-		else
-			data = num;;
+		// remove '-'
+		numerator = num.substr(sign);
+		denominator = "1";
+
+		int pointPosition = numerator.find('.');
+		// if could not find '.' -> is int
+		isInt = (pointPosition == std::string::npos);
+
+		// if is float
+		if (!isInt)
+		{
+			// 1. remove '.'
+			numerator.erase(pointPosition, 1);
+			// 2. denominator should be bigger 
+			denominator += std::string(numerator.size() - pointPosition, '0');
+		}
+
 	}
 }
