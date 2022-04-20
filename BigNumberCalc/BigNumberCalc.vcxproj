@@ -139,7 +139,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BigNumber.cpp" />
+    <ClCompile Include="BigNumber_basic.cpp" />
+    <ClCompile Include="BigNumber_operator.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
