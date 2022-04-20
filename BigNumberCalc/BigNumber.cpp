@@ -39,5 +39,10 @@ BigNumber::BigNumber(const std::string num)
 			denominator += std::string(numerator.size() - pointPosition, '0');
 		}
 
+		// remove redundant 'zero'
+		int zeroNum(0);
+		while (numerator.size() > 1 && numerator[zeroNum] == '0')
+			zeroNum++;
+		numerator = numerator.substr(zeroNum);
 	}
 }
