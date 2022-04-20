@@ -5,17 +5,12 @@
 using namespace std;
 int main(int argc, char* argv[])
 {
-	BigNumber inta("123");
+	BigNumber inta("789");
 	BigNumber intb("-456");
 	BigNumber floata("1234.123");
 	BigNumber floatb("-3456.789");
 	BigNumber floatc("0.000123");
 	BigNumber floatd("-0.789");
-	cout << inta << '\n';
-	cout << intb << '\n';
-	cout << floata << '\n';
-	cout << floatb << '\n';
-	cout << floatc << '\n';
-	cout << floatd << '\n';
+	cout << inta + inta;
 	return 0;
 }

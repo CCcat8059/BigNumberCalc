@@ -1,4 +1,5 @@
 #pragma once
+#include <algorithm>
 #include <iostream>
 #include <string>
 class BigNumber
@@ -19,5 +20,6 @@ public:
 	BigNumber(const std::string);
 
 	friend std::ostream& operator<<(std::ostream&, BigNumber);
+	friend BigNumber operator+(const BigNumber&, const BigNumber&);
 };
 
