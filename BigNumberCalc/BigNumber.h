@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <string>
 class BigNumber
 {
@@ -16,5 +17,7 @@ private:
 public:
 	BigNumber();
 	BigNumber(const std::string);
+
+	friend std::ostream& operator<<(std::ostream&, BigNumber);
 };
 
