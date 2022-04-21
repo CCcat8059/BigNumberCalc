@@ -3,7 +3,15 @@
 #include "BigNumber.h"
 
 using namespace std;
+void basic_test();
+void operator_test();
 int main(int argc, char* argv[])
+{
+	operator_test();
+	return 0;
+}
+
+void basic_test()
 {
 	BigNumber inta("789");
 	BigNumber intb("-456");
@@ -17,6 +25,11 @@ int main(int argc, char* argv[])
 	cout << floatb << '\n';
 	cout << floatc << '\n';
 	cout << floatd << '\n';
-	// cout << inta + inta << '\n';
-	return 0;
+}
+
+void operator_test()
+{
+	BigNumber inta("999"), intb("100"), intc("1");
+	cout << inta + intc << '\n';
+	cout << intb - intc << '\n';
 }
