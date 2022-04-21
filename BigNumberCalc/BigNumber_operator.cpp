@@ -6,6 +6,7 @@ std::ostream& operator<<(std::ostream& os, BigNumber num)
 		os << '-';
 	std::string output = num.numerator;
 
+
 	if (!num.isInt)
 	{
 		int zeroNum = num.denominator.size() - output.size();
@@ -47,6 +48,7 @@ BigNumber operator+(const BigNumber& a, const BigNumber& b)
 				temp += a.numerator[aIndex] - '0';
 			if (bIndex >= 0)
 				temp += b.numerator[bIndex] - '0';
+
 			carry = temp / 10;
 			result.numerator = (char)((temp % 10) + '0') + result.numerator;
 		}
@@ -69,24 +71,28 @@ BigNumber operator-(const BigNumber& a, const BigNumber& b)
 		for (int temp; aIndex >= 0 || bIndex >= 0; aIndex--, bIndex--)
 		{
 			// the index from tail to head 
-			
 			temp = carry;
 			if (aIndex >= 0)
 				temp += a.numerator[aIndex] - '0';
 			if (bIndex >= 0)
 				temp -= b.numerator[bIndex] - '0';
-			
-			
-			if (temp < 0) {
+
+			if (temp < 0)
+			{
 				carry = -1;
-				result.numerator = (char)(temp+10 + '0') + result.numerator;
+				result.numerator = (char)(temp + 10 + '0') + result.numerator;
 			}
-			else {
+			else
+			{
 				carry = 0;
 				result.numerator = (char)(temp + '0') + result.numerator;
 			}
-			
 		}
+		// remove redundant 'zero'
+		int zeroNum(0);
+		while (result.numerator.size() > 1 && result.numerator[zeroNum] == '0')
+			zeroNum++;
+		result.numerator = result.numerator.substr(zeroNum);
 	}
 	return result;
 }
