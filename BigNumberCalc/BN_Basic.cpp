@@ -46,3 +46,11 @@ BigNumber::BigNumber(const std::string num)
 		numerator = numerator.substr(zeroNum);
 	}
 }
+
+BigNumber::BigNumber(const BigNumber& num)
+{
+	this->numerator = num.numerator;
+	this->denominator = num.denominator;
+	this->isInt = num.isInt;
+	this->sign = num.sign;
+}
