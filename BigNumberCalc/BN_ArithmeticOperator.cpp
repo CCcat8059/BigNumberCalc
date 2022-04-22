@@ -1,36 +1,5 @@
 #include "BigNumber.h"
 
-std::ostream& operator<<(std::ostream& os, BigNumber num)
-{
-	if (num.sign)
-		os << '-';
-	std::string output = num.numerator;
-
-
-	if (!num.isInt)
-	{
-		int zeroNum = num.denominator.size() - output.size();
-		if (zeroNum > 0)
-		{
-			output = std::string(zeroNum, '0') + output;
-			output.insert(output.begin() + 1, '.');
-		}
-		else
-		{
-			output.insert(output.begin() + num.denominator.size(), '.');
-		}
-	}
-	os << output;
-
-#ifdef _DEBUG
-	os << '\n' << num.numerator << '\n';
-	os << num.denominator << '\n';
-	os << "isInt: " << num.isInt << " sign: " << num.sign;
-#endif // _DEBUG
-
-	return os;
-}
-
 BigNumber operator+(const BigNumber& a, const BigNumber& b)
 {
 	BigNumber result;
@@ -60,11 +29,16 @@ BigNumber operator+(const BigNumber& a, const BigNumber& b)
 
 BigNumber operator-(const BigNumber& a, const BigNumber& b)
 {
-	BigNumber result;
-	if (a.isInt && b.isInt)
+	BigNumber result, aTemp(a), bTemp(b);
+	if (aTemp.isInt && bTemp.isInt)
 	{
+		if (bTemp > aTemp)
+		{
+			std::swap(aTemp, bTemp);
+			result.sign = true;
+		}
 		result.numerator = "";
-		int aSize = a.numerator.size(), bSize = b.numerator.size();
+		int aSize = aTemp.numerator.size(), bSize = bTemp.numerator.size();
 
 		int carry(0);
 		int aIndex = aSize - 1, bIndex = bSize - 1;
@@ -73,9 +47,9 @@ BigNumber operator-(const BigNumber& a, const BigNumber& b)
 			// the index from tail to head 
 			temp = carry;
 			if (aIndex >= 0)
-				temp += a.numerator[aIndex] - '0';
+				temp += aTemp.numerator[aIndex] - '0';
 			if (bIndex >= 0)
-				temp -= b.numerator[bIndex] - '0';
+				temp -= bTemp.numerator[bIndex] - '0';
 
 			if (temp < 0)
 			{
@@ -88,6 +62,7 @@ BigNumber operator-(const BigNumber& a, const BigNumber& b)
 				result.numerator = (char)(temp + '0') + result.numerator;
 			}
 		}
+
 		// remove redundant 'zero'
 		int zeroNum(0);
 		while (result.numerator.size() > 1 && result.numerator[zeroNum] == '0')

@@ -139,9 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BigNumber_basic.cpp" />
-    <ClCompile Include="BigNumber_operator.cpp" />
+    <ClCompile Include="BN_AssignmentOperator.cpp" />
+    <ClCompile Include="BN_Basic.cpp" />
+    <ClCompile Include="BN_ArithmeticOperator.cpp" />
+    <ClCompile Include="BN_OtherOperator.cpp" />
+    <ClCompile Include="BN_RelationalOperator.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="utility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BigNumber.h" />

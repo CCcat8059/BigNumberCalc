@@ -18,9 +18,25 @@ private:
 public:
 	BigNumber();
 	BigNumber(const std::string);
+	BigNumber(const BigNumber&);
 
-	friend std::ostream& operator<<(std::ostream&, BigNumber);
+	BigNumber operator=(const BigNumber&);
+
 	friend BigNumber operator+(const BigNumber&, const BigNumber&);
 	friend BigNumber operator-(const BigNumber&, const BigNumber&);
+
+	friend bool operator==(const BigNumber&, const BigNumber&);
+	friend bool operator!=(const BigNumber&, const BigNumber&);
+	friend bool operator>(const BigNumber&, const BigNumber&);
+	friend bool operator>=(const BigNumber&, const BigNumber&);
+	friend bool operator<(const BigNumber&, const BigNumber&);
+	friend bool operator<=(const BigNumber&, const BigNumber&);
+
+
+	friend std::ostream& operator<<(std::ostream&, BigNumber);
+
+	// for positive integers' basic operation
+	friend BigNumber basicAdd(const BigNumber&, const BigNumber&);
+	friend BigNumber basicSub(const BigNumber&, const BigNumber&);
 };
 

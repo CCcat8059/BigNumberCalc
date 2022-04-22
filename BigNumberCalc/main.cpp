@@ -29,7 +29,7 @@ void basic_test()
 
 void operator_test()
 {
-	BigNumber inta("999"), intb("100"), intc("1");
-	cout << inta + intc << '\n';
+	BigNumber inta("999"), intb("1"), intc("1000");
+	// cout << inta + intc << '\n';
 	cout << intb - intc << '\n';
 }
