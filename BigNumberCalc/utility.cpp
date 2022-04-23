@@ -52,18 +52,20 @@ BigNumber basicAdd(const BigNumber& a, const BigNumber& b)
 	int zeroNum(0);
 	while (result.numerator.size() > 1 && result.numerator[zeroNum] == '0')
 		zeroNum++;
-	result.numerator = result.numerator.substr(zeroNum);
+	// if result.numerator's digits are all zero
+	if (zeroNum == result.numerator.size())
+		result.numerator = "0";
+	else
+		result.numerator = result.numerator.substr(zeroNum);
 	return result;
 }
 
-
 BigNumber basicSub(const BigNumber& a, const BigNumber& b)
 {
-	// TODO
-	// integer substruction (++, +-, -+, --)
-	BigNumber result, aTemp(a), bTemp(b);
-	bTemp.sign = !bTemp.sign;
-	return (aTemp + bTemp);
+	// integer substruction
+	BigNumber temp(b);
+	temp.sign = !temp.sign;
+	return (a + temp);
 }
 
 BigNumber basicMul(const BigNumber& a, const BigNumber& b)
