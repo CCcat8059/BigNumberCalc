@@ -43,6 +43,6 @@ public:
 	friend BigNumber basicSub(const BigNumber&, const BigNumber&);
 	friend BigNumber basicMul(const BigNumber&, const BigNumber&);
 	friend BigNumber basicDiv(const BigNumber&, const BigNumber&);
-
+	friend BigNumber abs(BigNumber);
 };
 
