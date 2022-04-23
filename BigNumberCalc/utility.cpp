@@ -17,13 +17,13 @@ BigNumber basicSub(const BigNumber& a, const BigNumber& b)
 BigNumber basicMul(const BigNumber& a, const BigNumber& b)
 {
 	// TODO
-	// integer substruction (++, +-, -+, --)
+	// integer multipication (++, +-, -+, --)
 	return BigNumber();
 }
 
 BigNumber basicDiv(const BigNumber& a, const BigNumber& b)
 {
 	// TODO
-	// integer substruction (++, +-, -+, --)
+	// integer division (++, +-, -+, --)
 	return BigNumber();
 }
