@@ -71,3 +71,15 @@ BigNumber operator-(const BigNumber& a, const BigNumber& b)
 	}
 	return result;
 }
+
+BigNumber operator*(const BigNumber& a, const BigNumber& b)
+{
+	BigNumber result;
+	return result;
+}
+
+BigNumber operator/(const BigNumber& a, const BigNumber& b)
+{
+	BigNumber result;
+	return result;
+}
