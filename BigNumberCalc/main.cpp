@@ -8,6 +8,7 @@ void operator_test();
 int main(int argc, char* argv[])
 {
 	operator_test();
+	// haha
 	return 0;
 }
 

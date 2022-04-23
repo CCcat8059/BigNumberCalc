@@ -82,12 +82,26 @@ BigNumber basicAdd(const BigNumber& a, const BigNumber& b)
 	
 }
 
-/*
+
 BigNumber basicSub(const BigNumber& a, const BigNumber& b)
 {
 	// TODO
 	// integer substruction (++, +-, -+, --)
 
+	return BigNumber();
 }
-*/
+
+
+BigNumber basicMul(const BigNumber& a, const BigNumber& b)
+{
+	// TODO
+	// integer substruction (++, +-, -+, --)
+	return BigNumber();
+}
+
+BigNumber basicDiv(const BigNumber& a, const BigNumber& b)
+{
+	// TODO
+	// integer substruction (++, +-, -+, --)
+	return BigNumber();
 }
