@@ -2,9 +2,9 @@
 
 BigNumber basicAdd(const BigNumber& a, const BigNumber& b)
 {
-	// TODO
 	// integer addition (++, +-, -+, --)
-	if ((a.sign == 0 && b.sign == 0) || (a.sign == 1 && b.sign == 1)) { //(+,+) (-,-)
+	if ((a.sign == 0 && b.sign == 0) || (a.sign == 1 && b.sign == 1)) //(+,+) (-,-)
+	{ 
 		BigNumber result;
 		if (a.isInt && b.isInt)
 		{
@@ -27,12 +27,14 @@ BigNumber basicAdd(const BigNumber& a, const BigNumber& b)
 			if (carry > 0)
 				result.numerator = (char)(carry + '0') + result.numerator;
 		}
-		if (a.sign == 1 && b.sign == 1) {
+		if (a.sign == 1 && b.sign == 1) 
+		{
 			result.sign = 1;
 		}
 		return result;
 	}
-	else { // (+,-) or (-,+)
+	else // (+,-) or (-,+)
+	{ 
 		BigNumber result, aTemp(a), bTemp(b);
 		if (aTemp.isInt && bTemp.isInt)
 		{
@@ -97,13 +99,13 @@ BigNumber basicSub(const BigNumber& a, const BigNumber& b)
 BigNumber basicMul(const BigNumber& a, const BigNumber& b)
 {
 	// TODO
-	// integer substruction (++, +-, -+, --)
+	// integer multipication (++, +-, -+, --)
 	return BigNumber();
 }
 
 BigNumber basicDiv(const BigNumber& a, const BigNumber& b)
 {
 	// TODO
-	// integer substruction (++, +-, -+, --)
+	// integer division (++, +-, -+, --)
 	return BigNumber();
 }
