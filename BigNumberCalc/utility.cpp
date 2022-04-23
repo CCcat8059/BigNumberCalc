@@ -221,3 +221,9 @@ BigNumber basicDiv(const BigNumber& a, const BigNumber& b)
 	// integer division (++, +-, -+, --)
 	return BigNumber();
 }
+
+BigNumber abs(BigNumber num)
+{
+	num.sign = false;
+	return num;
+}
