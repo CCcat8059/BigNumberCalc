@@ -48,7 +48,11 @@ BigNumber::BigNumber(const std::string num)
 		int zeroNum(0);
 		while (numerator.size() > 1 && numerator[zeroNum] == '0')
 			zeroNum++;
-		numerator = numerator.substr(zeroNum);
+		// if result.numerator's digits are all zero
+		if (zeroNum == numerator.size())
+			numerator = "0";
+		else
+			numerator = numerator.substr(zeroNum);
 	}
 }
 
