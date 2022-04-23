@@ -2,6 +2,8 @@
 
 BigNumber operator+(const BigNumber& a, const BigNumber& b)
 {
+	return basicAdd(a, b);
+	/*
 	BigNumber result;
 	if (a.isInt && b.isInt)
 	{
@@ -25,6 +27,8 @@ BigNumber operator+(const BigNumber& a, const BigNumber& b)
 			result.numerator = (char)(carry + '0') + result.numerator;
 	}
 	return result;
+	*/
+	
 }
 
 BigNumber operator-(const BigNumber& a, const BigNumber& b)
