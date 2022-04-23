@@ -41,18 +41,18 @@ void basic_test()
 
 void operator_test()
 {
-	BigNumber inta("-1"), intb("1"), intc("-1000");
-	cout << inta + intc << '\n';
-	cout << intc + inta << '\n';
+	BigNumber inta("-1"), intb("-1000");
+	cout << inta + intb << '\n';
+	cout << intb + inta << '\n';
 
-	cout << abs(inta) + intc << '\n';
-	cout << intc + abs(inta) << '\n';
+	cout << abs(inta) + intb << '\n';
+	cout << intb + abs(inta) << '\n';
 
-	cout << inta + abs(intc) << '\n';
-	cout << abs(intc) + inta << '\n';
+	cout << inta + abs(intb) << '\n';
+	cout << abs(intb) + inta << '\n';
 
-	cout << abs(inta) + abs(intc) << '\n';
-	cout << abs(intc) + abs(inta) << '\n';
+	cout << abs(inta) + abs(intb) << '\n';
+	cout << abs(intb) + abs(inta) << '\n';
 }
 
 void relational_test()

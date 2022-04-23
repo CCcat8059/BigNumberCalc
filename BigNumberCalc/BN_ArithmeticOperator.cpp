@@ -15,6 +15,7 @@ BigNumber operator+(const BigNumber& a, const BigNumber& b)
 	{
 		// TODO
 	}
+	// std::cout << a << " + " << b << " = " << result << '\n';
 	return result;
 }
 
