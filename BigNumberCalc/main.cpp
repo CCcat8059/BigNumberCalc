@@ -30,7 +30,7 @@ void basic_test()
 
 void operator_test()
 {
-	BigNumber inta("1500"), intb("1"), intc("-2500");
+	BigNumber inta("-5"), intb("1"), intc("2500");
 	cout << inta + intc << '\n';
-	//cout << intb - intc << '\n';
+	//cout << inta - intc << '\n';
 }

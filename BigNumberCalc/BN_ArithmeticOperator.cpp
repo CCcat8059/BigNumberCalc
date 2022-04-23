@@ -38,6 +38,7 @@ BigNumber operator-(const BigNumber& a, const BigNumber& b)
 	{
 		if (bTemp > aTemp)
 		{
+			std::cout << "swap" << std::endl;
 			std::swap(aTemp, bTemp);
 			result.sign = true;
 		}
