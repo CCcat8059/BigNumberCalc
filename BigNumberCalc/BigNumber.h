@@ -24,6 +24,9 @@ public:
 
 	friend BigNumber operator+(const BigNumber&, const BigNumber&);
 	friend BigNumber operator-(const BigNumber&, const BigNumber&);
+	friend BigNumber operator*(const BigNumber&, const BigNumber&);
+	friend BigNumber operator/(const BigNumber&, const BigNumber&);
+
 
 	friend bool operator==(const BigNumber&, const BigNumber&);
 	friend bool operator!=(const BigNumber&, const BigNumber&);
@@ -38,5 +41,8 @@ public:
 	// for positive integers' basic operation
 	friend BigNumber basicAdd(const BigNumber&, const BigNumber&);
 	friend BigNumber basicSub(const BigNumber&, const BigNumber&);
+	friend BigNumber basicMul(const BigNumber&, const BigNumber&);
+	friend BigNumber basicDiv(const BigNumber&, const BigNumber&);
+	friend BigNumber abs(BigNumber);
 };
 
