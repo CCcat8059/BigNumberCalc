@@ -21,9 +21,14 @@ BigNumber::BigNumber(const std::string num)
 	}
 	else
 	{
-		sign = (num[0] == '-');
-		// remove '-'
-		numerator = num.substr(sign);
+		sign = false;
+		numerator = num;
+		if (!isdigit(num[0]))
+		{
+			sign = (num[0] == '-');
+			// remove '-' or '+'
+			numerator = numerator.substr(1);
+		}
 		denominator = "1";
 
 		int pointPosition = numerator.find('.');
