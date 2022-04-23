@@ -21,12 +21,12 @@ BigNumber operator+(const BigNumber& a, const BigNumber& b)
 
 BigNumber operator-(const BigNumber& a, const BigNumber& b)
 {
+	/*
 	BigNumber result, aTemp(a), bTemp(b);
 	if (aTemp.isInt && bTemp.isInt)
 	{
 		if (bTemp > aTemp)
 		{
-			std::cout << "swap" << std::endl;
 			std::swap(aTemp, bTemp);
 			result.sign = true;
 		}
@@ -61,6 +61,21 @@ BigNumber operator-(const BigNumber& a, const BigNumber& b)
 		while (result.numerator.size() > 1 && result.numerator[zeroNum] == '0')
 			zeroNum++;
 		result.numerator = result.numerator.substr(zeroNum);
+	}
+	return result;
+	*/
+	BigNumber result;
+	if (a.isInt && b.isInt) // both are integer
+	{
+		result = basicSub(a, b);
+	}
+	else if (!a.isInt && !b.isInt) // both are float
+	{
+		// TODO
+	}
+	else // a and b are not the same type
+	{
+		// TODO
 	}
 	return result;
 }

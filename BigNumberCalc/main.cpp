@@ -8,8 +8,8 @@ void operator_test();
 void relational_test();
 int main(int argc, char* argv[])
 {
-	// basic_test();
-	operator_test();
+	//basic_test();
+	 operator_test();
 	// relational_test();
 	return 0;
 }
