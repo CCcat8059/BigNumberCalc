@@ -36,11 +36,14 @@ BigNumber basicAdd(const BigNumber& a, const BigNumber& b)
 		BigNumber result, aTemp(a), bTemp(b);
 		if (aTemp.isInt && bTemp.isInt)
 		{
-			if (a.sign == 1)
-			{
+			if (aTemp.sign == 1) { // a is negewive
+				aTemp.sign = 0;
 				std::swap(aTemp, bTemp);
 			}
-			if (bTemp.numerator > aTemp.numerator)
+			else {  // b is negetive
+				bTemp.sign = 0;
+			}
+			if (bTemp > aTemp) 
 			{
 				std::swap(aTemp, bTemp);
 				result.sign = true; // result is negetive
@@ -79,7 +82,6 @@ BigNumber basicAdd(const BigNumber& a, const BigNumber& b)
 		}
 		return result;
 	}
-	
 }
 
 
