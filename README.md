@@ -2,15 +2,17 @@
 ## BN_ArithmeticOperator
 ### operator +
 - BNint and BNint
-  + '+' and '+'
-- BNint and BNfloat
-- BNfloat and BNfloat
+- BNint and BNfloat  
+TODO
+- BNfloat and BNfloat  
+TODO
 
 ### operator -
 - BNint and BNint
-  + '+' and '+'
-- BNint and BNfloat
-- BNfloat and BNfloat
+- BNint and BNfloat  
+TODO
+- BNfloat and BNfloat  
+TODO
 
 ## BN_AssignmentOperator
 ### operator =
@@ -24,12 +26,16 @@
 
 ## BN_OtherOperator
 ### operator <<
-- only for denominator is 10^n
+- denominator is 10^n
+- other numerator and denominator (e.g 1/3, 3/7)  
+TODO
 
 ## BN_RelationalOperator
 ### operator ==
 #### BN to BN
-- simple compare string numerator and sign (no denominator)
+- compare numerator (both denominator are 1) 
+- make denominator be same and compare  
+TODO
 
 ### operator !=
 #### BN to BN
@@ -37,7 +43,9 @@
 
 ### operator >
 #### BN to BN
-- only integer compare (no compare denominator)
+- integer compare (both denominator are 1)
+- make denominator be same and compare  
+TODO
 
 ### operator >=
 #### BN to BN
@@ -57,6 +65,10 @@ basic addition for integer
 ### basicSub
 basic substruction for integer
 ### basicMul
-basic multipication for integer
+basic multipication for integer  
+TODO
 ### basicDiv
-basic division for integer
+basic division for integer  
+TODO
+### abs
+return |num|
