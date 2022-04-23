@@ -7,7 +7,8 @@ void basic_test();
 void operator_test();
 int main(int argc, char* argv[])
 {
-	basic_test();
+	operator_test();
+	// haha
 	return 0;
 }
 
