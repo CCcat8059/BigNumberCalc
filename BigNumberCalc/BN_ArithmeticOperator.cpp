@@ -2,33 +2,20 @@
 
 BigNumber operator+(const BigNumber& a, const BigNumber& b)
 {
-	return basicAdd(a, b);
-	/*
 	BigNumber result;
-	if (a.isInt && b.isInt)
+	if (a.isInt && b.isInt) // both are integer
 	{
-		result.numerator = "";
-		int aSize = a.numerator.size(), bSize = b.numerator.size();
-
-		int carry(0);
-		int aIndex = aSize - 1, bIndex = bSize - 1;
-		for (int temp; aIndex >= 0 || bIndex >= 0; aIndex--, bIndex--)
-		{
-			temp = carry;
-			if (aIndex >= 0)
-				temp += a.numerator[aIndex] - '0';
-			if (bIndex >= 0)
-				temp += b.numerator[bIndex] - '0';
-
-			carry = temp / 10;
-			result.numerator = (char)((temp % 10) + '0') + result.numerator;
-		}
-		if (carry > 0)
-			result.numerator = (char)(carry + '0') + result.numerator;
+		result = basicAdd(a, b);
+	}
+	else if (!a.isInt && !b.isInt) // both are float
+	{
+		// TODO
+	}
+	else // a and b are not the same type
+	{
+		// TODO
 	}
 	return result;
-	*/
-	
 }
 
 BigNumber operator-(const BigNumber& a, const BigNumber& b)
