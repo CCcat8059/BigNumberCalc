@@ -8,8 +8,8 @@ void operator_test();
 void relational_test();
 int main(int argc, char* argv[])
 {
-	//basic_test();
-	 operator_test();
+	// basic_test();
+	// operator_test();
 	// relational_test();
 	return 0;
 }
@@ -33,26 +33,33 @@ void basic_test()
 	BigNumber floatd("0.000123");
 	BigNumber floate("+0.000123");
 	BigNumber floatf("-0.789");
-
 	cout << floatd << '\n';
 	cout << floate << '\n';
 	cout << floatf << '\n';
+
+	BigNumber zeroa("0");
+	BigNumber zerob("+0");
+	BigNumber zeroc("-0");
+	cout << zeroa << '\n';
+	cout << zerob << '\n';
+	cout << zeroc << '\n';
 }
 
 void operator_test()
 {
-	BigNumber inta("-1"), intb("1"), intc("-1000");
-	cout << inta + intc << '\n';
-	cout << intc + inta << '\n';
+	int a = -12312312, b = -4545;
+	BigNumber inta(a), intb(b);
+	cout << a / b << ' ' << inta / intb << '\n';
+	cout << b / a << ' ' << intb / inta << '\n';
 
-	cout << abs(inta) + intc << '\n';
-	cout << intc + abs(inta) << '\n';
+	cout << abs(a) / b << ' ' << abs(inta) / intb << '\n';
+	cout << b / abs(a) << ' ' << intb / abs(inta) << '\n';
 
-	cout << inta + abs(intc) << '\n';
-	cout << abs(intc) + inta << '\n';
+	cout << a / abs(b) << ' ' << inta / abs(intb) << '\n';
+	cout << abs(b) / a << ' ' << abs(intb) / inta << '\n';
 
-	cout << abs(inta) + abs(intc) << '\n';
-	cout << abs(intc) + abs(inta) << '\n';
+	cout << abs(a) / abs(b) << ' ' << abs(inta) / abs(intb) << '\n';
+	cout << abs(b) / abs(a) << ' ' << abs(intb) / abs(inta) << '\n';
 }
 
 void relational_test()

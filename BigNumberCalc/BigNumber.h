@@ -1,6 +1,8 @@
 #pragma once
 #include <algorithm>
 #include <iostream>
+#include <sstream>
+#include <cstring>
 #include <string>
 class BigNumber
 {
@@ -19,8 +21,14 @@ public:
 	BigNumber();
 	BigNumber(const std::string);
 	BigNumber(const BigNumber&);
+	BigNumber(const int&);
+	BigNumber(const double&);
 
 	BigNumber operator=(const BigNumber&);
+	BigNumber operator+=(const BigNumber&);
+	BigNumber operator-=(const BigNumber&);
+	BigNumber operator*=(const BigNumber&);
+	BigNumber operator/=(const BigNumber&);
 
 	friend BigNumber operator+(const BigNumber&, const BigNumber&);
 	friend BigNumber operator-(const BigNumber&, const BigNumber&);
@@ -44,5 +52,6 @@ public:
 	friend BigNumber basicMul(const BigNumber&, const BigNumber&);
 	friend BigNumber basicDiv(const BigNumber&, const BigNumber&);
 	friend BigNumber abs(BigNumber);
+	friend BigNumber reciprocal(BigNumber);
 };
 
