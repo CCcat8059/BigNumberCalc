@@ -37,6 +37,8 @@ TODO
 - BN to BN
 ### operator *=
 - BN to BN
+### operator /=
+- BN to BN
 
 ## BN_Basic
 ### Constructor
