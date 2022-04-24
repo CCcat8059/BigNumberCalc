@@ -6,7 +6,6 @@ std::ostream& operator<<(std::ostream& os, BigNumber num)
 		os << '-';
 	std::string output = num.numerator;
 
-
 	if (!num.isInt)
 	{
 		int zeroNum = num.denominator.size() - output.size();
@@ -20,6 +19,8 @@ std::ostream& operator<<(std::ostream& os, BigNumber num)
 			output.insert(output.begin() + num.denominator.size(), '.');
 		}
 	}
+	else if (num.denominator != "1")
+		output += "/" + num.denominator;
 	os << output;
 
 #ifdef _DEBUG

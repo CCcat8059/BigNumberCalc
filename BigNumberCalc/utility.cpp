@@ -69,75 +69,74 @@ BigNumber basicSub(const BigNumber& a, const BigNumber& b)
 
 BigNumber basicMul(const BigNumber& a, const BigNumber& b)
 {
-	// integer multipication (++, +-, -+, --)
+	// integer multipication
 	BigNumber result, aTemp(a), bTemp(b);
 
-	// check if a or b =0
-	bool is_a_zero = true;
-	bool is_b_zero = true;
-	for (size_t i = 0; i < aTemp.numerator.length(); i++)
-	{
-		is_a_zero = is_a_zero && aTemp.numerator[i] == '0';
-	}
-	for (size_t i = 0; i < bTemp.numerator.length(); i++)
-	{
-		is_b_zero = is_b_zero && bTemp.numerator[i] == '0';
-	}
-	if (is_a_zero || is_b_zero) {
-		return BigNumber();
-	}
+	// check if either of two numbers is zero
+	if (aTemp.numerator == "0" || bTemp.numerator == "0")
+		return result;
 
-
-	result.numerator = "";
 	result.sign = aTemp.sign ^ bTemp.sign;
-	int len = aTemp.numerator.length() + bTemp.numerator.length();
-	int* value = new int[len];
-	for (size_t i = 0; i < len; i++)
+	if (aTemp.numerator == "1")
 	{
-		value[i] = 0;
+		result.numerator = bTemp.numerator;
+		return result;
 	}
+	else if (bTemp.numerator == "1")
+	{
+		result.numerator = aTemp.numerator;
+		return result;
+	}
+
+	int len = aTemp.numerator.length() + bTemp.numerator.length();
+	int* value = new int[len]();	// allocate memory and initialize to zero
 	for (int i = aTemp.numerator.length() - 1; i >= 0; i--)
 	{
 		for (int j = bTemp.numerator.length() - 1; j >= 0; j--)
 		{
-			int index = aTemp.numerator.length() - 1 - i + bTemp.numerator.length() - 1 - j;
+			int index = (aTemp.numerator.length() - 1 - i) + (bTemp.numerator.length() - 1 - j);
 			value[index] += (aTemp.numerator[i] - '0') * (bTemp.numerator[j] - '0');
 		}
 	}
-	for (int i = 0; i < len-1; i++)
+	for (int i = 0; i < len - 1; i++)
 	{
 		value[i + 1] += value[i] / 10;
 		value[i] = value[i] % 10;
 	}
-	int index = len - 1;
 
+	// statistic how many digits have been used
+	int index = len - 1;
 	while (value[index] == 0)
-	{
 		index--;
-	}
-	while (index >= 0) {
-		result.numerator = result.numerator + (char)(value[index--] + '0');
-	}
+
+	// put data into BigNumber 
+	for (result.numerator = ""; index >= 0; index--)
+		result.numerator += (char)(value[index] + '0');
+
 	delete[] value;
 	return result;
 }
 
 BigNumber basicDiv(const BigNumber& a, const BigNumber& b)
 {
-	// integer division (++, +-, -+, --)
-	BigNumber result, aTemp(a), bTemp(b);
-	std::string temp = bTemp.denominator;
-	bTemp.denominator = bTemp.numerator;
-	bTemp.numerator = temp;
-	result = aTemp * bTemp;
-	std::cout << result.numerator << '/' << result.denominator << '\n';
-
+	// integer division
+	BigNumber result;
+	result.sign = a.sign ^ b.sign;
+	result.numerator = a.numerator;
+	result.denominator = b.numerator;
 	return result;
-
 }
 
 BigNumber abs(BigNumber num)
 {
 	num.sign = false;
+	return num;
+}
+
+BigNumber reciprocal(BigNumber num)
+{
+	std::string temp = num.numerator;
+	num.numerator = num.denominator;
+	num.denominator = temp;
 	return num;
 }
