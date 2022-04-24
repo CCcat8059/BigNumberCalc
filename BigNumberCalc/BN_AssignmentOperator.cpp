@@ -27,3 +27,8 @@ BigNumber BigNumber::operator*=(const BigNumber& num)
 	return *this;
 }
 
+BigNumber BigNumber::operator/=(const BigNumber& num)
+{
+	*this = (*this) / num;
+	return *this;
+}
