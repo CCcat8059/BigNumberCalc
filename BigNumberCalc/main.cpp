@@ -9,7 +9,7 @@ void relational_test();
 int main(int argc, char* argv[])
 {
 	// basic_test();
-	// operator_test();
+	 operator_test();
 	// relational_test();
 	return 0;
 }
@@ -41,9 +41,11 @@ void basic_test()
 
 void operator_test()
 {
-	BigNumber inta("-1000"), intb("-1000");
+	BigNumber inta("-10"), intb("-1234");
 	cout << inta + intb << '\n';
 	cout << intb + inta << '\n';
+	cout << intb * inta << '\n';
+	cout << intb / inta << '\n';
 
 	cout << abs(inta) + intb << '\n';
 	cout << intb + abs(inta) << '\n';

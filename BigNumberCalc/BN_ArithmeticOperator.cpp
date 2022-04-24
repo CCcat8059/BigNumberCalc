@@ -40,11 +40,13 @@ BigNumber operator-(const BigNumber& a, const BigNumber& b)
 BigNumber operator*(const BigNumber& a, const BigNumber& b)
 {
 	BigNumber result;
+	result = basicMul(a, b);
 	return result;
 }
 
 BigNumber operator/(const BigNumber& a, const BigNumber& b)
 {
 	BigNumber result;
+	result = basicDiv(a, b);
 	return result;
 }
