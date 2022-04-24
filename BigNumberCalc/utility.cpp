@@ -88,13 +88,15 @@ BigNumber basicMul(const BigNumber& a, const BigNumber& b)
 		return result;
 	}
 
-	int len = aTemp.numerator.length() + bTemp.numerator.length();
+	int aSize = aTemp.numerator.length(),
+		bSize = bTemp.numerator.length(),
+		len = aSize + bSize;
 	int* value = new int[len]();	// allocate memory and initialize to zero
-	for (int i = aTemp.numerator.length() - 1; i >= 0; i--)
+	for (int i = aSize - 1; i >= 0; i--)
 	{
-		for (int j = bTemp.numerator.length() - 1; j >= 0; j--)
+		for (int j = bSize - 1; j >= 0; j--)
 		{
-			int index = (aTemp.numerator.length() - 1 - i) + (bTemp.numerator.length() - 1 - j);
+			int index = (aSize - 1 - i) + (bSize - 1 - j);
 			value[index] += (aTemp.numerator[i] - '0') * (bTemp.numerator[j] - '0');
 		}
 	}
