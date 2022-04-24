@@ -9,7 +9,7 @@ void relational_test();
 int main(int argc, char* argv[])
 {
 	// basic_test();
-	 operator_test();
+	operator_test();
 	// relational_test();
 	return 0;
 }
@@ -33,28 +33,32 @@ void basic_test()
 	BigNumber floatd("0.000123");
 	BigNumber floate("+0.000123");
 	BigNumber floatf("-0.789");
-
 	cout << floatd << '\n';
 	cout << floate << '\n';
 	cout << floatf << '\n';
+
+	BigNumber zeroa("0");
+	BigNumber zerob("+0");
+	BigNumber zeroc("-0");
+	cout << zeroa << '\n';
+	cout << zerob << '\n';
+	cout << zeroc << '\n';
 }
 
 void operator_test()
 {
-	BigNumber inta("-10"), intb("-1234");
-	cout << inta + intb << '\n';
-	cout << intb + inta << '\n';
+	BigNumber inta("0"), intb("-1234");
 	cout << intb * inta << '\n';
-	cout << intb / inta << '\n';
+	cout << inta * intb << '\n';
 
-	cout << abs(inta) + intb << '\n';
-	cout << intb + abs(inta) << '\n';
+	cout << abs(inta) * intb << '\n';
+	cout << intb * abs(inta) << '\n';
 
-	cout << inta + abs(intb) << '\n';
-	cout << abs(intb) + inta << '\n';
+	cout << inta * abs(intb) << '\n';
+	cout << abs(intb) * inta << '\n';
 
-	cout << abs(inta) + abs(intb) << '\n';
-	cout << abs(intb) + abs(inta) << '\n';
+	cout << abs(inta) * abs(intb) << '\n';
+	cout << abs(intb) * abs(inta) << '\n';
 }
 
 void relational_test()

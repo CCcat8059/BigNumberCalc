@@ -1,8 +1,8 @@
 #pragma once
 #include <algorithm>
 #include <iostream>
-#include <string>
 #include <cstring>
+#include <string>
 class BigNumber
 {
 private:

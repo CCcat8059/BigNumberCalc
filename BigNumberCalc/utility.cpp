@@ -69,11 +69,10 @@ BigNumber basicSub(const BigNumber& a, const BigNumber& b)
 
 BigNumber basicMul(const BigNumber& a, const BigNumber& b)
 {
-	// TODO
 	// integer multipication (++, +-, -+, --)
 	BigNumber result, aTemp(a), bTemp(b);
 
-	//check if a or b =0
+	// check if a or b =0
 	bool is_a_zero = true;
 	bool is_b_zero = true;
 	for (size_t i = 0; i < aTemp.numerator.length(); i++)
@@ -119,13 +118,12 @@ BigNumber basicMul(const BigNumber& a, const BigNumber& b)
 	while (index >= 0) {
 		result.numerator = result.numerator + (char)(value[index--] + '0');
 	}
+	delete[] value;
 	return result;
-
 }
 
 BigNumber basicDiv(const BigNumber& a, const BigNumber& b)
 {
-	// TODO
 	// integer division (++, +-, -+, --)
 	BigNumber result, aTemp(a), bTemp(b);
 	std::string temp = bTemp.denominator;
