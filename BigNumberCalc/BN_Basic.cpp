@@ -66,3 +66,17 @@ BigNumber::BigNumber(const BigNumber& num)
 	this->isInt = num.isInt;
 	this->sign = num.sign;
 }
+
+BigNumber::BigNumber(const int& num)
+{
+	std::stringstream ss;
+	ss << num;
+	new (this) BigNumber(ss.str());
+}
+
+BigNumber::BigNumber(const double& num)
+{
+	std::stringstream ss;
+	ss << num;
+	new (this) BigNumber(ss.str());
+}

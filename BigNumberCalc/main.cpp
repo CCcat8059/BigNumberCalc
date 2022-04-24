@@ -47,18 +47,19 @@ void basic_test()
 
 void operator_test()
 {
-	BigNumber inta("-123"), intb("-3");
-	cout << intb * inta << '\n';
-	cout << inta * intb << '\n';
+	int a = -12312312, b = -4545;
+	BigNumber inta(a), intb(b);
+	cout << a / b << ' ' << inta / intb << '\n';
+	cout << b / a << ' ' << intb / inta << '\n';
 
-	cout << abs(inta) * intb << '\n';
-	cout << intb * abs(inta) << '\n';
+	cout << abs(a) / b << ' ' << abs(inta) / intb << '\n';
+	cout << b / abs(a) << ' ' << intb / abs(inta) << '\n';
 
-	cout << inta * abs(intb) << '\n';
-	cout << abs(intb) * inta << '\n';
+	cout << a / abs(b) << ' ' << inta / abs(intb) << '\n';
+	cout << abs(b) / a << ' ' << abs(intb) / inta << '\n';
 
-	cout << abs(inta) * abs(intb) << '\n';
-	cout << abs(intb) * abs(inta) << '\n';
+	cout << abs(a) / abs(b) << ' ' << abs(inta) / abs(intb) << '\n';
+	cout << abs(b) / abs(a) << ' ' << abs(intb) / abs(inta) << '\n';
 }
 
 void relational_test()
