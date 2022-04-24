@@ -123,9 +123,53 @@ BigNumber basicDiv(const BigNumber& a, const BigNumber& b)
 {
 	// integer division
 	BigNumber result;
+	if (b.numerator == "0")
+		throw "warning: division by zero\n";
+
 	result.sign = a.sign ^ b.sign;
-	result.numerator = a.numerator;
-	result.denominator = b.numerator;
+	if (b.numerator == "1")
+	{
+		result.numerator = a.numerator;
+		return result;
+	}
+	else if (b.numerator == a.numerator)
+	{
+		result.numerator = "1";
+		return result;
+	}
+	else if (abs(b) > abs(a))
+	{
+		result.numerator = "0";
+		result.sign = false;
+		return result;
+	}
+
+	BigNumber temp, aTemp(abs(a)), bTemp(abs(b));
+	result.numerator = "", temp.numerator = "";
+	int index(0);
+	for (; temp < bTemp; index++)
+		temp.numerator += aTemp.numerator[index];
+
+	int mul(0);
+	BigNumber sub;
+	for (; bTemp + sub <= temp; sub += bTemp)
+		mul++;
+	result.numerator += (char)(mul + '0');
+	temp -= sub;
+
+	for (int i = index; i < aTemp.numerator.size(); i++)
+	{
+		if (temp.numerator == "0")
+			temp.numerator = aTemp.numerator[i];
+		else
+			temp.numerator += aTemp.numerator[i];
+		mul = 0;
+		sub = BigNumber();
+		for (; bTemp + sub <= temp; sub += bTemp)
+			mul++;
+		result.numerator += (char)(mul + '0');
+		temp -= sub;
+	}
 	return result;
 }
 

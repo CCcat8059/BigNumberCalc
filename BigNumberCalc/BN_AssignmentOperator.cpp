@@ -8,3 +8,22 @@ BigNumber BigNumber::operator=(const BigNumber& num)
 	this->sign = num.sign;
 	return *this;
 }
+
+BigNumber BigNumber::operator+=(const BigNumber& num)
+{
+	*this = (*this) + num;
+	return *this;
+}
+
+BigNumber BigNumber::operator-=(const BigNumber& num)
+{
+	*this = (*this) - num;
+	return *this;
+}
+
+BigNumber BigNumber::operator*=(const BigNumber& num)
+{
+	*this = (*this) * num;
+	return *this;
+}
+
