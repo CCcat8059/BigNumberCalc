@@ -14,6 +14,20 @@ TODO
 - BNfloat and BNfloat  
 TODO
 
+### operator *
+- BNint and BNint
+- BNint and BNfloat  
+TODO
+- BNfloat and BNfloat  
+TODO
+
+### operator /
+- BNint and BNint
+- BNint and BNfloat  
+TODO
+- BNfloat and BNfloat  
+TODO
+
 ## BN_AssignmentOperator
 ### operator =
 - BN to BN
@@ -65,10 +79,11 @@ basic addition for integer
 ### basicSub
 basic substruction for integer
 ### basicMul
-basic multipication for integer  
-TODO
+basic multipication for integer
 ### basicDiv
-basic division for integer  
-TODO
+basic division for integer
+
 ### abs
 return |num|
+### reciprocal
+return 1/num
