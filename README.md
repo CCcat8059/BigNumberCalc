@@ -31,12 +31,20 @@ TODO
 ## BN_AssignmentOperator
 ### operator =
 - BN to BN
+### operator +=
+- BN to BN
+### operator -=
+- BN to BN
+### operator *=
+- BN to BN
 
 ## BN_Basic
 ### Constructor
 - BN()
 - BN(string)
 - BN(BN) (copy constructor)
+- BN(int)
+- BN(double)
 
 ## BN_OtherOperator
 ### operator <<
