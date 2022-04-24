@@ -53,6 +53,9 @@ BigNumber::BigNumber(const std::string num)
 			numerator = "0";
 		else
 			numerator = numerator.substr(zeroNum);
+
+		if (sign && numerator == "0") // -0
+			sign = false;
 	}
 }
 

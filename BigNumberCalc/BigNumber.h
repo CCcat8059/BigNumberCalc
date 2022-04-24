@@ -1,8 +1,8 @@
 #pragma once
 #include <algorithm>
 #include <iostream>
-#include <string>
 #include <cstring>
+#include <string>
 class BigNumber
 {
 private:
@@ -45,5 +45,6 @@ public:
 	friend BigNumber basicMul(const BigNumber&, const BigNumber&);
 	friend BigNumber basicDiv(const BigNumber&, const BigNumber&);
 	friend BigNumber abs(BigNumber);
+	friend BigNumber reciprocal(BigNumber);
 };
 
