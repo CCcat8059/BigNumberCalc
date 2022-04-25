@@ -21,9 +21,14 @@ BigNumber::BigNumber(const std::string num)
 	}
 	else
 	{
-		sign = (num[0] == '-');
-		// remove '-'
-		numerator = num.substr(sign);
+		sign = false;
+		numerator = num;
+		if (!isdigit(num[0]))
+		{
+			sign = (num[0] == '-');
+			// remove '-' or '+'
+			numerator = numerator.substr(1);
+		}
 		denominator = "1";
 
 		int pointPosition = numerator.find('.');
@@ -43,6 +48,35 @@ BigNumber::BigNumber(const std::string num)
 		int zeroNum(0);
 		while (numerator.size() > 1 && numerator[zeroNum] == '0')
 			zeroNum++;
-		numerator = numerator.substr(zeroNum);
+		// if result.numerator's digits are all zero
+		if (zeroNum == numerator.size())
+			numerator = "0";
+		else
+			numerator = numerator.substr(zeroNum);
+
+		if (sign && numerator == "0") // -0
+			sign = false;
 	}
+}
+
+BigNumber::BigNumber(const BigNumber& num)
+{
+	this->numerator = num.numerator;
+	this->denominator = num.denominator;
+	this->isInt = num.isInt;
+	this->sign = num.sign;
+}
+
+BigNumber::BigNumber(const int& num)
+{
+	std::stringstream ss;
+	ss << num;
+	new (this) BigNumber(ss.str());
+}
+
+BigNumber::BigNumber(const double& num)
+{
+	std::stringstream ss;
+	ss << num;
+	new (this) BigNumber(ss.str());
 }
