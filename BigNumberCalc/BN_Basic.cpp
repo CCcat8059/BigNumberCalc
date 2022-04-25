@@ -53,6 +53,9 @@ BigNumber::BigNumber(const std::string num)
 			numerator = "0";
 		else
 			numerator = numerator.substr(zeroNum);
+
+		if (sign && numerator == "0") // -0
+			sign = false;
 	}
 }
 
@@ -62,4 +65,18 @@ BigNumber::BigNumber(const BigNumber& num)
 	this->denominator = num.denominator;
 	this->isInt = num.isInt;
 	this->sign = num.sign;
+}
+
+BigNumber::BigNumber(const int& num)
+{
+	std::stringstream ss;
+	ss << num;
+	new (this) BigNumber(ss.str());
+}
+
+BigNumber::BigNumber(const double& num)
+{
+	std::stringstream ss;
+	ss << num;
+	new (this) BigNumber(ss.str());
 }
