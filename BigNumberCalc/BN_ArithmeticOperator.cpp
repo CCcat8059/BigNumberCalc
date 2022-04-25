@@ -72,3 +72,18 @@ BigNumber operator/(const BigNumber& a, const BigNumber& b)
 	}
 	return result;
 }
+
+BigNumber operator%(const BigNumber& a, const BigNumber& b)
+{
+	// integer only
+	//suppose a and b are integer
+	if (a.isInt && b.isInt) {
+		BigNumber r = a / b;
+		return (a - (b * r));
+	}
+	else {
+		throw "warning: number must be integer\n";
+
+	}
+
+}
