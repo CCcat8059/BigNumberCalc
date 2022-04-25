@@ -186,3 +186,10 @@ BigNumber reciprocal(BigNumber num)
 	num.denominator = temp;
 	return num;
 }
+
+BigNumber gcd(const BigNumber& a, const BigNumber& b)
+{
+	BigNumber zero(0);
+	if (b == zero) return a;
+	else return gcd(b, a % b);
+}
