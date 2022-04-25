@@ -11,6 +11,7 @@ int main(int argc, char* argv[])
 	// basic_test();
 	operator_test();
 	// relational_test();
+
 	return 0;
 }
 
@@ -47,19 +48,11 @@ void basic_test()
 
 void operator_test()
 {
-	int a = -5, b = -2;
+	int a = -12312312, b = -4545;
 	BigNumber inta(a), intb(b);
-	cout << a / b << ' ' << inta / intb << '\n';
-	cout << b / a << ' ' << intb / inta << '\n';
+	cout << abs(inta) % abs(intb) << endl; 
+	cout << abs(intb) % abs(inta) << endl;
 
-	cout << abs(a) / b << ' ' << abs(inta) / intb << '\n';
-	cout << b / abs(a) << ' ' << intb / abs(inta) << '\n';
-
-	cout << a / abs(b) << ' ' << inta / abs(intb) << '\n';
-	cout << abs(b) / a << ' ' << abs(intb) / inta << '\n';
-
-	cout << abs(a) / abs(b) << ' ' << abs(inta) / abs(intb) << '\n';
-	cout << abs(b) / abs(a) << ' ' << abs(intb) / abs(inta) << '\n';
 }
 
 void relational_test()

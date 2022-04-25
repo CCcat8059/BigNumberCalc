@@ -38,6 +38,7 @@ public:
 	friend BigNumber operator-(const BigNumber&, const BigNumber&);
 	friend BigNumber operator*(const BigNumber&, const BigNumber&);
 	friend BigNumber operator/(const BigNumber&, const BigNumber&);
+	friend BigNumber operator%(const BigNumber&, const BigNumber&);
 
 
 	friend bool operator==(const BigNumber&, const BigNumber&);
@@ -93,5 +94,6 @@ public:
 	friend BigNumber operator<=(const BigNumber&, const int&);
 	friend BigNumber operator<=(const int&, const BigNumber&);
 #pragma endregion
+	friend BigNumber gcd(const BigNumber&, const BigNumber&);
 };
 
