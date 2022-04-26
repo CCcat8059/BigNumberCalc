@@ -25,8 +25,8 @@ public:
 	BigNumber(const BigNumber&);
 	BigNumber(const int&);
 	BigNumber(const double&);
+	BigNumber(std::string, std::string);
 #pragma endregion
-	BigNumber(std::string a, std::string b);
 
 #pragma region BigNumber operator overloading
 	BigNumber operator=(const BigNumber&);
@@ -39,7 +39,6 @@ public:
 	friend BigNumber operator+(const BigNumber&, const BigNumber&);
 	friend BigNumber operator-(const BigNumber&, const BigNumber&);
 	friend BigNumber operator*(const BigNumber&, const BigNumber&);
-	friend BigNumber operator*(const BigNumber&, int intB);       //BN*INT by haha
 	friend BigNumber operator/(const BigNumber&, const BigNumber&);
 	friend BigNumber operator%(const BigNumber&, const BigNumber&);
 
@@ -50,7 +49,6 @@ public:
 	friend bool operator>=(const BigNumber&, const BigNumber&);
 	friend bool operator<(const BigNumber&, const BigNumber&);
 	friend bool operator<=(const BigNumber&, const BigNumber&);
-
 
 	friend std::ostream& operator<<(std::ostream&, BigNumber);
 #pragma endregion
@@ -65,7 +63,6 @@ public:
 	friend BigNumber reciprocal(BigNumber);
 	friend BigNumber gcd(const BigNumber&, const BigNumber&);
 #pragma endregion
-
 
 #pragma region operator overloading with int
 	BigNumber operator=(const int&);

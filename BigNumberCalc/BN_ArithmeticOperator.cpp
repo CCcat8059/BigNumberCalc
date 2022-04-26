@@ -55,10 +55,9 @@ BigNumber operator*(const BigNumber& a, const BigNumber& b)
 	return result;
 }
 
-BigNumber operator*(const BigNumber& a, int intB)
+BigNumber operator*(const BigNumber& a, const int& intB)
 {
-	BigNumber result;
-	BigNumber b(intB);
+	BigNumber result, b(intB);
 	if (a.isInt && b.isInt) // both are integer
 	{
 		result = basicMul(a, b);

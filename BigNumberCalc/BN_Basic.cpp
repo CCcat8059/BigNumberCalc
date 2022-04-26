@@ -81,11 +81,11 @@ BigNumber::BigNumber(const double& num)
 	new (this) BigNumber(ss.str());
 }
 
-BigNumber::BigNumber(std::string a, std::string b)
+BigNumber::BigNumber(std::string numerator, std::string denominator)
 {
-
-	this->numerator = a;
-	this->denominator = b;
+	// TODO judge sign
+	this->numerator = numerator;
+	this->denominator = denominator;
 	this->isInt = false;
 	this->sign = false;
 }
