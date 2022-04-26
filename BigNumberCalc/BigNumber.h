@@ -4,6 +4,7 @@
 #include <sstream>
 #include <cstring>
 #include <string>
+#include <vector>
 class BigNumber
 {
 private:
@@ -23,6 +24,7 @@ public:
 	BigNumber(const BigNumber&);
 	BigNumber(const int&);
 	BigNumber(const double&);
+	BigNumber(std::string a, std::string b);
 
 	BigNumber operator=(const BigNumber&);
 	BigNumber operator+=(const BigNumber&);
@@ -33,6 +35,7 @@ public:
 	friend BigNumber operator+(const BigNumber&, const BigNumber&);
 	friend BigNumber operator-(const BigNumber&, const BigNumber&);
 	friend BigNumber operator*(const BigNumber&, const BigNumber&);
+	friend BigNumber operator*(const BigNumber&, int intB);       //BN*INT by haha
 	friend BigNumber operator/(const BigNumber&, const BigNumber&);
 	friend BigNumber operator%(const BigNumber&, const BigNumber&);
 
