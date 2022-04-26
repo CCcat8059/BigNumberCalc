@@ -6,6 +6,7 @@ using namespace std;
 void basic_test();
 void operator_test();
 void relational_test();
+void output_div_test();
 int gcd(int a, int b)
 {
 	if (b == 0)
@@ -17,8 +18,7 @@ int main(int argc, char* argv[])
 	// basic_test();
 	// operator_test();
 	// relational_test();
-	BigNumber inta("3483453453453453453453"), intb("453453453453453");
-	cout  << gcd(inta, intb);
+
 	return 0;
 }
 
@@ -70,7 +70,11 @@ void operator_test()
 	cout << abs(b) % abs(a) << ' ' << abs(intb) % abs(inta) << '\n';
 
 }
-
+void output_div_test() {
+	BigNumber floata("235436465324354763", "45678976237646");
+	BigNumber floatb("100", "3");
+	cout << floata<<std::endl<< floatb;
+}
 void relational_test()
 {
 	BigNumber inta("1000"), intb("-1000");

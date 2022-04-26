@@ -55,6 +55,25 @@ BigNumber operator*(const BigNumber& a, const BigNumber& b)
 	return result;
 }
 
+BigNumber operator*(const BigNumber& a, int intB)
+{
+	BigNumber result;
+	BigNumber b(intB);
+	if (a.isInt && b.isInt) // both are integer
+	{
+		result = basicMul(a, b);
+	}
+	else if (!a.isInt && !b.isInt) // both are float
+	{
+		// TODO
+	}
+	else // a and b are not the same type
+	{
+		// TODO
+	}
+	return result;
+}
+
 BigNumber operator/(const BigNumber& a, const BigNumber& b)
 {
 	BigNumber result;

@@ -4,6 +4,7 @@
 #include <sstream>
 #include <cstring>
 #include <string>
+#include <vector>
 class BigNumber
 {
 private:
@@ -25,6 +26,7 @@ public:
 	BigNumber(const int&);
 	BigNumber(const double&);
 #pragma endregion
+	BigNumber(std::string a, std::string b);
 
 #pragma region BigNumber operator overloading
 	BigNumber operator=(const BigNumber&);
@@ -37,6 +39,7 @@ public:
 	friend BigNumber operator+(const BigNumber&, const BigNumber&);
 	friend BigNumber operator-(const BigNumber&, const BigNumber&);
 	friend BigNumber operator*(const BigNumber&, const BigNumber&);
+	friend BigNumber operator*(const BigNumber&, int intB);       //BN*INT by haha
 	friend BigNumber operator/(const BigNumber&, const BigNumber&);
 	friend BigNumber operator%(const BigNumber&, const BigNumber&);
 
