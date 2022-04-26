@@ -60,6 +60,7 @@ public:
 	friend BigNumber basicDiv(const BigNumber&, const BigNumber&);
 	friend BigNumber abs(BigNumber);
 	friend BigNumber reciprocal(BigNumber);
+	friend BigNumber gcd(const BigNumber&, const BigNumber&);
 #pragma endregion
 
 
@@ -94,6 +95,5 @@ public:
 	friend BigNumber operator<=(const BigNumber&, const int&);
 	friend BigNumber operator<=(const int&, const BigNumber&);
 #pragma endregion
-	friend BigNumber gcd(const BigNumber&, const BigNumber&);
 };
 

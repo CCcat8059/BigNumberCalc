@@ -6,12 +6,19 @@ using namespace std;
 void basic_test();
 void operator_test();
 void relational_test();
+int gcd(int a, int b)
+{
+	if (b == 0)
+		return a;
+	return gcd(b, a % b);
+}
 int main(int argc, char* argv[])
 {
 	// basic_test();
-	operator_test();
+	// operator_test();
 	// relational_test();
-
+	BigNumber inta("3483453453453453453453"), intb("453453453453453");
+	cout  << gcd(inta, intb);
 	return 0;
 }
 
@@ -48,10 +55,19 @@ void basic_test()
 
 void operator_test()
 {
-	int a = -12312312, b = -4545;
+	int a = -13123, b = 578678;
 	BigNumber inta(a), intb(b);
-	cout << abs(inta) % abs(intb) << endl; 
-	cout << abs(intb) % abs(inta) << endl;
+	cout << a % b << ' ' << inta % intb << '\n';
+	cout << b % a << ' ' << intb % inta << '\n';
+
+	cout << abs(a) % b << ' ' << abs(inta) % intb << '\n';
+	cout << b % abs(a) << ' ' << intb % abs(inta) << '\n';
+
+	cout << a % abs(b) << ' ' << inta % abs(intb) << '\n';
+	cout << abs(b) % a << ' ' << abs(intb) % inta << '\n';
+
+	cout << abs(a) % abs(b) << ' ' << abs(inta) % abs(intb) << '\n';
+	cout << abs(b) % abs(a) << ' ' << abs(intb) % abs(inta) << '\n';
 
 }
 
