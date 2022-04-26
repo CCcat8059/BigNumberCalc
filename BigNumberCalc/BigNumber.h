@@ -19,18 +19,22 @@ private:
 	// false -> float, true -> int
 	bool isInt;
 public:
+#pragma region Constructor
 	BigNumber();
 	BigNumber(const std::string);
 	BigNumber(const BigNumber&);
 	BigNumber(const int&);
 	BigNumber(const double&);
+#pragma endregion
 	BigNumber(std::string a, std::string b);
 
+#pragma region BigNumber operator overloading
 	BigNumber operator=(const BigNumber&);
 	BigNumber operator+=(const BigNumber&);
 	BigNumber operator-=(const BigNumber&);
 	BigNumber operator*=(const BigNumber&);
 	BigNumber operator/=(const BigNumber&);
+
 
 	friend BigNumber operator+(const BigNumber&, const BigNumber&);
 	friend BigNumber operator-(const BigNumber&, const BigNumber&);
@@ -49,7 +53,9 @@ public:
 
 
 	friend std::ostream& operator<<(std::ostream&, BigNumber);
+#pragma endregion
 
+#pragma region utility
 	// for positive integers' basic operation
 	friend BigNumber basicAdd(const BigNumber&, const BigNumber&);
 	friend BigNumber basicSub(const BigNumber&, const BigNumber&);
@@ -58,5 +64,39 @@ public:
 	friend BigNumber abs(BigNumber);
 	friend BigNumber reciprocal(BigNumber);
 	friend BigNumber gcd(const BigNumber&, const BigNumber&);
+#pragma endregion
+
+
+#pragma region operator overloading with int
+	BigNumber operator=(const int&);
+	BigNumber operator+=(const int&);
+	BigNumber operator-=(const int&);
+	BigNumber operator*=(const int&);
+	BigNumber operator/=(const int&);
+
+
+	friend BigNumber operator+(const BigNumber&, const int&);
+	friend BigNumber operator+(const int&, const BigNumber&);
+	friend BigNumber operator-(const BigNumber&, const int&);
+	friend BigNumber operator-(const int&, const BigNumber&);
+	friend BigNumber operator*(const BigNumber&, const int&);
+	friend BigNumber operator*(const int&, const BigNumber&);
+	friend BigNumber operator/(const BigNumber&, const int&);
+	friend BigNumber operator/(const int&, const BigNumber&);
+
+
+	friend BigNumber operator==(const BigNumber&, const int&);
+	friend BigNumber operator==(const int&, const BigNumber&);
+	friend BigNumber operator!=(const BigNumber&, const int&);
+	friend BigNumber operator!=(const int&, const BigNumber&);
+	friend BigNumber operator>(const BigNumber&, const int&);
+	friend BigNumber operator>(const int&, const BigNumber&);
+	friend BigNumber operator>=(const BigNumber&, const int&);
+	friend BigNumber operator>=(const int&, const BigNumber&);
+	friend BigNumber operator<(const BigNumber&, const int&);
+	friend BigNumber operator<(const int&, const BigNumber&);
+	friend BigNumber operator<=(const BigNumber&, const int&);
+	friend BigNumber operator<=(const int&, const BigNumber&);
+#pragma endregion
 };
 
