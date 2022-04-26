@@ -6,12 +6,13 @@ using namespace std;
 void basic_test();
 void operator_test();
 void relational_test();
+void output_div_test();
 int main(int argc, char* argv[])
 {
 	// basic_test();
-	 operator_test();
+	// operator_test();
 	// relational_test();
-
+	output_div_test();
 	return 0;
 }
 
@@ -54,7 +55,11 @@ void operator_test()
 	cout << abs(intb) % abs(inta) << endl;
 
 }
-
+void output_div_test() {
+	BigNumber floata("235436465324354763", "45678976237646");
+	BigNumber floatb("100", "3");
+	cout << floata<<std::endl<< floatb;
+}
 void relational_test()
 {
 	BigNumber inta("1000"), intb("-1000");

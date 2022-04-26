@@ -80,3 +80,12 @@ BigNumber::BigNumber(const double& num)
 	ss << num;
 	new (this) BigNumber(ss.str());
 }
+
+BigNumber::BigNumber(std::string a, std::string b)
+{
+
+	this->numerator = a;
+	this->denominator = b;
+	this->isInt = false;
+	this->sign = false;
+}
