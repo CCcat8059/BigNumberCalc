@@ -7,12 +7,6 @@ void basic_test();
 void operator_test();
 void relational_test();
 void output_div_test();
-int gcd(int a, int b)
-{
-	if (b == 0)
-		return a;
-	return gcd(b, a % b);
-}
 int main(int argc, char* argv[])
 {
 	// basic_test();
