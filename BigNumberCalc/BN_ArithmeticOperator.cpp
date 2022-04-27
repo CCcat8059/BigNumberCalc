@@ -64,7 +64,6 @@ BigNumber operator-(const int& intA, const BigNumber& b)
 #pragma region operator*
 BigNumber operator*(const BigNumber& a, const BigNumber& b)
 {
-	//std::cout << a.isInt << " " << b.isInt << std::endl;
 	BigNumber result;
 	if (a.isInt && b.isInt) // both are integer
 	{
@@ -72,7 +71,6 @@ BigNumber operator*(const BigNumber& a, const BigNumber& b)
 	}
 	else if (!a.isInt && !b.isInt) // both are float
 	{
-		//std::cout << "QQ" << std::endl;
 		BigNumber a1(a.numerator), a2(a.denominator), b1(b.numerator), b2(b.denominator);
 		result.numerator = (a1 * b1).numerator;
 		result.denominator = (a2 * b2).numerator;
@@ -80,7 +78,10 @@ BigNumber operator*(const BigNumber& a, const BigNumber& b)
 	}
 	else // a and b are not the same type
 	{
-		// TODO
+		BigNumber a1(a.numerator), a2(a.denominator), b1(b.numerator), b2(b.denominator);
+		result.numerator = (a1 * b1).numerator;
+		result.denominator = (a2 * b2).numerator;
+		result.isInt = 0;
 	}
 	return result;
 }
@@ -117,7 +118,7 @@ BigNumber operator/(const BigNumber& a, const BigNumber& b)
 		BigNumber a1(a.numerator), a2(a.denominator), b1(b.numerator), b2(b.denominator);
 		result.numerator = (a1 * b2).numerator;
 		result.denominator = (a2 * b1).numerator;
-		result.isInt = 1;
+		result.isInt = 0;
 	}
 	return result;
 }
