@@ -6,12 +6,13 @@ using namespace std;
 void basic_test();
 void operator_test();
 void relational_test();
+void output_div_test();
 int main(int argc, char* argv[])
 {
-	// basic_test();
-	 operator_test();
+	basic_test();
+	// operator_test();
 	// relational_test();
-
+	// output_div_test();
 	return 0;
 }
 
@@ -45,14 +46,12 @@ void basic_test()
 	cout << zerob << '\n';
 	cout << zeroc << '\n';
 }
-
 void operator_test()
 {
 	BigNumber floata("1.1"), floatb("2.1");
 	cout << floata/floatb << endl;
 
 }
-
 void relational_test()
 {
 	BigNumber inta("1000"), intb("-1000");
@@ -72,4 +71,9 @@ void relational_test()
 	cout << intd << " > " << inta << (intd > inta ? " yes" : " no") << '\n';
 	cout << intd << " > " << intb << (intd > intb ? " yes" : " no") << '\n';
 	cout << intd << " > " << intc << (intd > intc ? " yes" : " no") << '\n';
+}
+void output_div_test() 
+{
+	BigNumber floata("101230", "1231233");
+	cout << floata;
 }
