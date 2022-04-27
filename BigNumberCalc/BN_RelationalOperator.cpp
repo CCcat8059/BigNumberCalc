@@ -1,5 +1,6 @@
 #include "BigNumber.h"
 
+#pragma region operator==
 bool operator==(const BigNumber& a, const BigNumber& b)
 {
 	if (a.sign != b.sign)
@@ -11,11 +12,35 @@ bool operator==(const BigNumber& a, const BigNumber& b)
 	return true;
 }
 
+bool operator==(const BigNumber& a, const int& intB)
+{
+	return a == BigNumber(intB);
+}
+
+bool operator==(const int& intA, const BigNumber& b)
+{
+	return BigNumber(intA) == b;
+}
+#pragma endregion
+
+#pragma region operator!=
 bool operator!=(const BigNumber& a, const BigNumber& b)
 {
 	return !(a == b);
 }
 
+bool operator!=(const BigNumber& a, const int& intB)
+{
+	return a != BigNumber(intB);
+}
+
+bool operator!=(const int& intA, const BigNumber& b)
+{
+	return BigNumber(intA) != b;
+}
+#pragma endregion
+
+#pragma region operator>
 bool operator>(const BigNumber& a, const BigNumber& b)
 {
 	bool flag = a.sign ^ b.sign;
@@ -39,17 +64,64 @@ bool operator>(const BigNumber& a, const BigNumber& b)
 	return false;
 }
 
+bool operator>(const BigNumber& a, const int& intB)
+{
+	return a > BigNumber(intB);
+}
+
+bool operator>(const int& intA, const BigNumber& b)
+{
+	return BigNumber(intA) > b;
+}
+#pragma endregion
+
+#pragma region operator>=
 bool operator>=(const BigNumber& a, const BigNumber& b)
 {
 	return a > b || a == b;
 }
 
+bool operator>=(const BigNumber& a, const int& intB)
+{
+	return a >= BigNumber(intB);
+}
+
+bool operator>=(const int& intA, const BigNumber& b)
+{
+	return BigNumber(intA) >= b;
+}
+#pragma endregion
+
+#pragma region operator<
 bool operator<(const BigNumber& a, const BigNumber& b)
 {
 	return !(a > b || a == b);
 }
 
+bool operator<(const BigNumber& a, const int& intB)
+{
+	return a < BigNumber(intB);
+}
+
+bool operator<(const int& intA, const BigNumber& b)
+{
+	return BigNumber(intA) < b;
+}
+#pragma endregion
+
+#pragma region operator<=
 bool operator<=(const BigNumber& a, const BigNumber& b)
 {
 	return !(a > b);
 }
+
+bool operator<=(const BigNumber& a, const int& intB)
+{
+	return a <= BigNumber(intB);
+}
+
+bool operator<=(const int& intA, const BigNumber& b)
+{
+	return BigNumber(intA) <= b;
+}
+#pragma endregion

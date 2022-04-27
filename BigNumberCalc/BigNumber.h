@@ -87,18 +87,18 @@ public:
 	friend BigNumber operator%(const int&, const BigNumber&);
 
 
-	friend BigNumber operator==(const BigNumber&, const int&);
-	friend BigNumber operator==(const int&, const BigNumber&);
-	friend BigNumber operator!=(const BigNumber&, const int&);
-	friend BigNumber operator!=(const int&, const BigNumber&);
-	friend BigNumber operator>(const BigNumber&, const int&);
-	friend BigNumber operator>(const int&, const BigNumber&);
-	friend BigNumber operator>=(const BigNumber&, const int&);
-	friend BigNumber operator>=(const int&, const BigNumber&);
-	friend BigNumber operator<(const BigNumber&, const int&);
-	friend BigNumber operator<(const int&, const BigNumber&);
-	friend BigNumber operator<=(const BigNumber&, const int&);
-	friend BigNumber operator<=(const int&, const BigNumber&);
+	friend bool operator==(const BigNumber&, const int&);
+	friend bool operator==(const int&, const BigNumber&);
+	friend bool operator!=(const BigNumber&, const int&);
+	friend bool operator!=(const int&, const BigNumber&);
+	friend bool operator>(const BigNumber&, const int&);
+	friend bool operator>(const int&, const BigNumber&);
+	friend bool operator>=(const BigNumber&, const int&);
+	friend bool operator>=(const int&, const BigNumber&);
+	friend bool operator<(const BigNumber&, const int&);
+	friend bool operator<(const int&, const BigNumber&);
+	friend bool operator<=(const BigNumber&, const int&);
+	friend bool operator<=(const int&, const BigNumber&);
 #pragma endregion
 };
 
