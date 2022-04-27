@@ -6,12 +6,13 @@ using namespace std;
 void basic_test();
 void operator_test();
 void relational_test();
+void output_div_test();
 int main(int argc, char* argv[])
 {
-	// basic_test();
-	 operator_test();
+	basic_test();
+	// operator_test();
 	// relational_test();
-
+	// output_div_test();
 	return 0;
 }
 
@@ -45,16 +46,23 @@ void basic_test()
 	cout << zerob << '\n';
 	cout << zeroc << '\n';
 }
-
 void operator_test()
 {
-	int a = -13123, b = -123532;
+	int a = -13123, b = 578678;
 	BigNumber inta(a), intb(b);
-	cout << abs(inta) % abs(intb) << endl; 
-	cout << abs(intb) % abs(inta) << endl;
+	cout << a % b << ' ' << inta % intb << '\n';
+	cout << b % a << ' ' << intb % inta << '\n';
+
+	cout << abs(a) % b << ' ' << abs(inta) % intb << '\n';
+	cout << b % abs(a) << ' ' << intb % abs(inta) << '\n';
+
+	cout << a % abs(b) << ' ' << inta % abs(intb) << '\n';
+	cout << abs(b) % a << ' ' << abs(intb) % inta << '\n';
+
+	cout << abs(a) % abs(b) << ' ' << abs(inta) % abs(intb) << '\n';
+	cout << abs(b) % abs(a) << ' ' << abs(intb) % abs(inta) << '\n';
 
 }
-
 void relational_test()
 {
 	BigNumber inta("1000"), intb("-1000");
@@ -74,4 +82,9 @@ void relational_test()
 	cout << intd << " > " << inta << (intd > inta ? " yes" : " no") << '\n';
 	cout << intd << " > " << intb << (intd > intb ? " yes" : " no") << '\n';
 	cout << intd << " > " << intc << (intd > intc ? " yes" : " no") << '\n';
+}
+void output_div_test() 
+{
+	BigNumber floata("101230", "1231233");
+	cout << floata;
 }
