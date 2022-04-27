@@ -9,7 +9,7 @@ void relational_test();
 void output_div_test();
 int main(int argc, char* argv[])
 {
-	// basic_test();
+	basic_test();
 	// operator_test();
 	// relational_test();
 	// output_div_test();

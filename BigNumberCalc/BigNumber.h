@@ -60,10 +60,12 @@ public:
 	friend BigNumber basicSub(const BigNumber&, const BigNumber&);
 	friend BigNumber basicMul(const BigNumber&, const BigNumber&);
 	friend BigNumber basicDiv(const BigNumber&, const BigNumber&);
+	// mathematic calculate
 	friend BigNumber abs(BigNumber);
 	friend BigNumber reciprocal(BigNumber);
 	friend BigNumber gcd(const BigNumber&, const BigNumber&);
 	friend BigNumber lcm(const BigNumber&, const BigNumber&);
+	friend void parseStrToBN(BigNumber*, const std::string);
 #pragma endregion
 
 #pragma region operator overloading with int
