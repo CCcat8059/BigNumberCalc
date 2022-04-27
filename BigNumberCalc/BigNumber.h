@@ -19,23 +19,27 @@ private:
 	// false -> float, true -> int
 	bool isInt;
 public:
+#pragma region Constructor
 	BigNumber();
 	BigNumber(const std::string);
 	BigNumber(const BigNumber&);
 	BigNumber(const int&);
 	BigNumber(const double&);
-	BigNumber(std::string a, std::string b);
+	BigNumber(std::string, std::string);
+#pragma endregion
 
+#pragma region BigNumber operator overloading
 	BigNumber operator=(const BigNumber&);
 	BigNumber operator+=(const BigNumber&);
 	BigNumber operator-=(const BigNumber&);
 	BigNumber operator*=(const BigNumber&);
 	BigNumber operator/=(const BigNumber&);
+	BigNumber operator%=(const BigNumber&);
+
 
 	friend BigNumber operator+(const BigNumber&, const BigNumber&);
 	friend BigNumber operator-(const BigNumber&, const BigNumber&);
 	friend BigNumber operator*(const BigNumber&, const BigNumber&);
-	friend BigNumber operator*(const BigNumber&, int intB);       //BN*INT by haha
 	friend BigNumber operator/(const BigNumber&, const BigNumber&);
 	friend BigNumber operator%(const BigNumber&, const BigNumber&);
 
@@ -47,16 +51,56 @@ public:
 	friend bool operator<(const BigNumber&, const BigNumber&);
 	friend bool operator<=(const BigNumber&, const BigNumber&);
 
-
 	friend std::ostream& operator<<(std::ostream&, BigNumber);
+#pragma endregion
 
+#pragma region utility
 	// for positive integers' basic operation
 	friend BigNumber basicAdd(const BigNumber&, const BigNumber&);
 	friend BigNumber basicSub(const BigNumber&, const BigNumber&);
 	friend BigNumber basicMul(const BigNumber&, const BigNumber&);
 	friend BigNumber basicDiv(const BigNumber&, const BigNumber&);
+	// mathematic calculate
 	friend BigNumber abs(BigNumber);
 	friend BigNumber reciprocal(BigNumber);
 	friend BigNumber gcd(const BigNumber&, const BigNumber&);
+	friend BigNumber lcm(const BigNumber&, const BigNumber&);
+	friend void parseStrToBN(BigNumber*, const std::string);
+#pragma endregion
+
+#pragma region operator overloading with int
+	BigNumber operator=(const int&);
+	BigNumber operator+=(const int&);
+	BigNumber operator-=(const int&);
+	BigNumber operator*=(const int&);
+	BigNumber operator/=(const int&);
+	BigNumber operator%=(const int&);
+
+
+	friend BigNumber operator+(const BigNumber&, const int&);
+	friend BigNumber operator+(const int&, const BigNumber&);
+	friend BigNumber operator-(const BigNumber&, const int&);
+	friend BigNumber operator-(const int&, const BigNumber&);
+	friend BigNumber operator*(const BigNumber&, const int&);
+	friend BigNumber operator*(const int&, const BigNumber&);
+	friend BigNumber operator/(const BigNumber&, const int&);
+	friend BigNumber operator/(const int&, const BigNumber&);
+	friend BigNumber operator%(const BigNumber&, const int&);
+	friend BigNumber operator%(const int&, const BigNumber&);
+
+
+	friend bool operator==(const BigNumber&, const int&);
+	friend bool operator==(const int&, const BigNumber&);
+	friend bool operator!=(const BigNumber&, const int&);
+	friend bool operator!=(const int&, const BigNumber&);
+	friend bool operator>(const BigNumber&, const int&);
+	friend bool operator>(const int&, const BigNumber&);
+	friend bool operator>=(const BigNumber&, const int&);
+	friend bool operator>=(const int&, const BigNumber&);
+	friend bool operator<(const BigNumber&, const int&);
+	friend bool operator<(const int&, const BigNumber&);
+	friend bool operator<=(const BigNumber&, const int&);
+	friend bool operator<=(const int&, const BigNumber&);
+#pragma endregion
 };
 

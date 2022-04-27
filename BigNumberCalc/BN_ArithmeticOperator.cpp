@@ -1,5 +1,6 @@
 #include "BigNumber.h"
 
+#pragma region operator+
 BigNumber operator+(const BigNumber& a, const BigNumber& b)
 {
 	BigNumber result;
@@ -19,6 +20,18 @@ BigNumber operator+(const BigNumber& a, const BigNumber& b)
 	return result;
 }
 
+BigNumber operator+(const BigNumber& a, const int& intB)
+{
+	return a + BigNumber(intB);
+}
+
+BigNumber operator+(const int& intA,const BigNumber& b)
+{
+	return BigNumber(intA) + b;
+}
+#pragma endregion
+
+#pragma region operator-
 BigNumber operator-(const BigNumber& a, const BigNumber& b)
 {
 	BigNumber result;
@@ -37,6 +50,18 @@ BigNumber operator-(const BigNumber& a, const BigNumber& b)
 	return result;
 }
 
+BigNumber operator-(const BigNumber& a, const int& intB)
+{
+	return a - BigNumber(intB);
+}
+
+BigNumber operator-(const int& intA, const BigNumber& b)
+{
+	return BigNumber(intA) - b;
+}
+#pragma endregion
+
+#pragma region operator*
 BigNumber operator*(const BigNumber& a, const BigNumber& b)
 {
 	BigNumber result;
@@ -55,25 +80,18 @@ BigNumber operator*(const BigNumber& a, const BigNumber& b)
 	return result;
 }
 
-BigNumber operator*(const BigNumber& a, int intB)
+BigNumber operator*(const BigNumber& a, const int& intB)
 {
-	BigNumber result;
-	BigNumber b(intB);
-	if (a.isInt && b.isInt) // both are integer
-	{
-		result = basicMul(a, b);
-	}
-	else if (!a.isInt && !b.isInt) // both are float
-	{
-		// TODO
-	}
-	else // a and b are not the same type
-	{
-		// TODO
-	}
-	return result;
+	return a * BigNumber(intB);
 }
 
+BigNumber operator*(const int& intA, const BigNumber& b)
+{
+	return BigNumber(intA) * b;
+}
+#pragma endregion
+
+#pragma region operator/
 BigNumber operator/(const BigNumber& a, const BigNumber& b)
 {
 	BigNumber result;
@@ -92,17 +110,36 @@ BigNumber operator/(const BigNumber& a, const BigNumber& b)
 	return result;
 }
 
+BigNumber operator/(const BigNumber& a, const int& intB)
+{
+	return a / BigNumber(intB);
+}
+
+BigNumber operator/(const int& intA, const BigNumber& b)
+{
+	return BigNumber(intA) / b;
+}
+#pragma endregion
+
+#pragma region operator%
 BigNumber operator%(const BigNumber& a, const BigNumber& b)
 {
-	// integer only
-	//suppose a and b are integer
-	if (a.isInt && b.isInt) {
-		BigNumber r = a / b;
-		return (a - (b * r));
-	}
-	else {
+	// !!! integer only !!!
+	// suppose a and b are integer
+	if (!a.isInt || !b.isInt)
 		throw "warning: number must be integer\n";
 
-	}
-
+	BigNumber temp = a / b;
+	return (a - (b * temp));
 }
+
+BigNumber operator%(const BigNumber& a, const int& intB)
+{
+	return a % BigNumber(intB);
+}
+
+BigNumber operator%(const int& intA, const BigNumber& b)
+{
+	return BigNumber(intA) % b;
+}
+#pragma endregion

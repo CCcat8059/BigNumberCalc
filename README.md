@@ -6,6 +6,7 @@
 TODO
 - BNfloat and BNfloat  
 TODO
+- BNint and int (or int and BNint)
 
 ### operator -
 - BNint and BNint
@@ -13,6 +14,7 @@ TODO
 TODO
 - BNfloat and BNfloat  
 TODO
+- BNint and int (or int and BNint)
 
 ### operator *
 - BNint and BNint
@@ -20,6 +22,7 @@ TODO
 TODO
 - BNfloat and BNfloat  
 TODO
+- BNint and int (or int and BNint)
 
 ### operator /
 - BNint and BNint
@@ -27,18 +30,33 @@ TODO
 TODO
 - BNfloat and BNfloat  
 TODO
+- BNint and int (or int and BNint)
+
+### operator %
+- BNint and BNint
+- BNint and int (or int and BNint)
+
 
 ## BN_AssignmentOperator
 ### operator =
 - BN to BN
+- BN to int
 ### operator +=
 - BN to BN
+- BN to int
 ### operator -=
 - BN to BN
+- BN to int
 ### operator *=
 - BN to BN
+- BN to int
 ### operator /=
 - BN to BN
+- BN to int
+### operator %=
+- BN to BN
+- BN to int
+
 
 ## BN_Basic
 ### Constructor
@@ -47,12 +65,15 @@ TODO
 - BN(BN) (copy constructor)
 - BN(int)
 - BN(double)
+- BN(numerator, denominator)
+
 
 ## BN_OtherOperator
 ### operator <<
 - denominator is 10^n
 - other numerator and denominator (e.g 1/3, 3/7)  
 TODO
+
 
 ## BN_RelationalOperator
 ### operator ==
@@ -83,6 +104,7 @@ TODO
 #### BN to BN
 - !(a > b)
 
+
 ## utility
 ### basicAdd
 basic addition for integer
@@ -97,3 +119,7 @@ basic division for integer
 return |num|
 ### reciprocal
 return 1/num
+### gcd
+return gcd
+### lcm
+return lcm
