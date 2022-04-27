@@ -18,7 +18,7 @@ int main(int argc, char* argv[])
 	// basic_test();
 	// operator_test();
 	// relational_test();
-	output_div_test();
+	// output_div_test();
 	return 0;
 }
 
@@ -91,7 +91,6 @@ void relational_test()
 }
 void output_div_test() 
 {
-	BigNumber floata("235436465324354763", "45678976237646");
-	BigNumber floatb("100", "3");
-	cout << floata << std::endl << floatb;
+	BigNumber floata("101230", "1231233");
+	cout << floata;
 }

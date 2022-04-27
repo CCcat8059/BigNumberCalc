@@ -4,24 +4,26 @@ std::ostream& operator<<(std::ostream& os, BigNumber num)
 {
 	if (num.sign)
 		os << '-';
-	std::string  output = num.numerator;
 
-	if (!num.isInt && num.denominator != "1") {
+#ifndef _DEBUG
+	std::string output = num.numerator;
+	if (!num.isInt && num.denominator != "1")
+	{
 		output = "";
-		std::string Dividend = num.numerator;
-		std::string Divisor = num.denominator;
+		std::string Dividend = num.numerator, Divisor = num.denominator;
 		BigNumber BN_Divisor(Divisor);
 		std::vector<BigNumber> base_num(10);
 		for (size_t i = 0; i < 10; i++)
-		{
 			base_num[i] = BN_Divisor * i;
-		}
+
 		Dividend = "0" + Dividend;
 		int index_decimalStart = Dividend.size() - Divisor.size();
-		for (size_t i = 0; i < index_decimalStart+100; i++)
+		for (size_t i = 0; i < index_decimalStart + 100; i++)
 		{
-			if(i== index_decimalStart)output += '.';
-			if(i>= index_decimalStart)Dividend += '0';
+			if (i == index_decimalStart)
+				output += '.';
+			if (i >= index_decimalStart)
+				Dividend += '0';
 
 			std::string Dividend_tmp = Dividend.substr(i, Divisor.size() + 1);
 			int Dividend_lead = 0, Divisor_lead = 0;
@@ -36,20 +38,19 @@ std::ostream& operator<<(std::ostream& os, BigNumber num)
 				quotient -= 1;
 
 			std::string remainder = (base_num[quotient] - BigNumber(Dividend_tmp)).numerator;
-			while (remainder.size() < Dividend_tmp.size()) {
+			while (remainder.size() < Dividend_tmp.size())
 				remainder = "0" + remainder;
-			}
 
 			Dividend.replace(i, Dividend_tmp.size(), remainder);
 			//std::cout << Dividend_lead << "/" << Divisor_lead << "=" << quotient << std::endl;
 			output += (char)(quotient + '0');
 		}
 	}
-
 	os << output;
+#endif // !_DEBUG
 
 #ifdef _DEBUG
-	os << '\n' << num.numerator << '\n';
+	os << num.numerator << '\n';
 	os << num.denominator << '\n';
 	os << "isInt: " << num.isInt << " sign: " << num.sign;
 #endif // _DEBUG

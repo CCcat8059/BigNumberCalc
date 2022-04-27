@@ -83,7 +83,7 @@ BigNumber::BigNumber(const double& num)
 
 BigNumber::BigNumber(std::string numerator, std::string denominator)
 {
-	// TODO judge sign
+	// TODO parse numerator and denominator (+,- integer, float)
 	this->numerator = numerator;
 	this->denominator = denominator;
 	this->isInt = false;

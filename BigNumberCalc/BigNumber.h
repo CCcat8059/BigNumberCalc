@@ -34,6 +34,7 @@ public:
 	BigNumber operator-=(const BigNumber&);
 	BigNumber operator*=(const BigNumber&);
 	BigNumber operator/=(const BigNumber&);
+	BigNumber operator%=(const BigNumber&);
 
 
 	friend BigNumber operator+(const BigNumber&, const BigNumber&);
@@ -62,6 +63,7 @@ public:
 	friend BigNumber abs(BigNumber);
 	friend BigNumber reciprocal(BigNumber);
 	friend BigNumber gcd(const BigNumber&, const BigNumber&);
+	friend BigNumber lcm(const BigNumber&, const BigNumber&);
 #pragma endregion
 
 #pragma region operator overloading with int
@@ -70,6 +72,7 @@ public:
 	BigNumber operator-=(const int&);
 	BigNumber operator*=(const int&);
 	BigNumber operator/=(const int&);
+	BigNumber operator%=(const int&);
 
 
 	friend BigNumber operator+(const BigNumber&, const int&);
@@ -80,6 +83,8 @@ public:
 	friend BigNumber operator*(const int&, const BigNumber&);
 	friend BigNumber operator/(const BigNumber&, const int&);
 	friend BigNumber operator/(const int&, const BigNumber&);
+	friend BigNumber operator%(const BigNumber&, const int&);
+	friend BigNumber operator%(const int&, const BigNumber&);
 
 
 	friend BigNumber operator==(const BigNumber&, const int&);

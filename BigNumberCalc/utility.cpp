@@ -193,3 +193,8 @@ BigNumber gcd(const BigNumber& a, const BigNumber& b)
 		return a;
 	return gcd(b, a % b);
 }
+
+BigNumber lcm(const BigNumber& a, const BigNumber& b)
+{
+	return (a * b) / gcd(a, b);
+}

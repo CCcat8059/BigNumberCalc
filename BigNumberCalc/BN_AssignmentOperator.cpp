@@ -33,6 +33,11 @@ BigNumber BigNumber::operator/=(const BigNumber& num)
 	*this = (*this) / num;
 	return *this;
 }
+BigNumber BigNumber::operator%=(const BigNumber& num)
+{
+	*this = (*this) % num;
+	return *this;
+}
 #pragma endregion
 
 #pragma region int
@@ -67,6 +72,12 @@ BigNumber BigNumber::operator/=(const int& num)
 {
 	BigNumber temp(num);
 	*this = (*this) / temp;
+	return *this;
+}
+BigNumber BigNumber::operator%=(const int& num)
+{
+	BigNumber temp(num);
+	*this = (*this) % temp;
 	return *this;
 }
 #pragma endregion
