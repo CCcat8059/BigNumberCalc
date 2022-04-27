@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
 	//basic_test();
 	 operator_test();
 	// relational_test();
-	output_div_test();
+	//output_div_test();
 	return 0;
 }
 
@@ -48,8 +48,16 @@ void basic_test()
 }
 void operator_test()
 {
-	BigNumber floata("1.1"), floatb("2.1");
-	cout << floata*floatb << endl;
+
+	//BigNumber inta("-5"), intb("3");
+	//cout << inta * intb << endl;
+	
+	BigNumber floata("-5.123481231"), floatb("2.0");
+	//cout << floata << endl;
+	//cout << floatb << endl;
+	cout << floata * floatb << endl;
+	cout << floata / floatb << endl;
+	
 
 }
 void relational_test()

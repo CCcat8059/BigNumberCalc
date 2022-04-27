@@ -10,13 +10,24 @@ BigNumber operator+(const BigNumber& a, const BigNumber& b)
 	}
 	else if (!a.isInt && !b.isInt) // both are float
 	{
-		// TODO
+		BigNumber a1(a.numerator), a2(a.denominator), b1(b.numerator), b2(b.denominator);
+		BigNumber c11(a1 * b2), c12(a2 * b1), c2(a2 * b2);
+		c11.sign = a.sign;
+		c12.sign = b.sign;
+		result = c11 + c12;
+		result.denominator = c2.numerator;
+		result.isInt = 0;
 	}
 	else // a and b are not the same type
 	{
-		// TODO
+		BigNumber a1(a.numerator), a2(a.denominator), b1(b.numerator), b2(b.denominator);
+		BigNumber c11(a1 * b2), c12(a2 * b1), c2(a2 * b2);
+		c11.sign = a.sign;
+		c12.sign = b.sign;
+		result = c11 + c12;
+		result.denominator = c2.numerator;
+		result.isInt = 0;
 	}
-	// std::cout << a << " + " << b << " = " << result << '\n';
 	return result;
 }
 
@@ -41,11 +52,24 @@ BigNumber operator-(const BigNumber& a, const BigNumber& b)
 	}
 	else if (!a.isInt && !b.isInt) // both are float
 	{
-		// TODO
+		// ¥ý³q¤À
+		BigNumber a1(a.numerator), a2(a.denominator), b1(b.numerator), b2(b.denominator);
+		BigNumber c11(a1 * b2), c12(a2 * b1), c2(a2 * b2);
+		c11.sign = a.sign;
+		c12.sign = b.sign;
+		result = c11 - c12;
+		result.denominator = c2.numerator;
+		result.isInt = 0;
 	}
 	else // a and b are not the same type
 	{
-		// TODO
+		BigNumber a1(a.numerator), a2(a.denominator), b1(b.numerator), b2(b.denominator);
+		BigNumber c11(a1 * b2), c12(a2 * b1), c2(a2 * b2);
+		c11.sign = a.sign;
+		c12.sign = b.sign;
+		result = c11 - c12;
+		result.denominator = c2.numerator;
+		result.isInt = 0;
 	}
 	return result;
 }
@@ -65,6 +89,7 @@ BigNumber operator-(const int& intA, const BigNumber& b)
 BigNumber operator*(const BigNumber& a, const BigNumber& b)
 {
 	BigNumber result;
+	result.sign = a.sign ^ b.sign;
 	if (a.isInt && b.isInt) // both are integer
 	{
 		result = basicMul(a, b);
@@ -101,6 +126,7 @@ BigNumber operator*(const int& intA, const BigNumber& b)
 BigNumber operator/(const BigNumber& a, const BigNumber& b)
 {
 	BigNumber result;
+	result.sign = a.sign ^ b.sign;
 	if (a.isInt && b.isInt) // both are integer
 	{
 		result = basicDiv(a, b);
