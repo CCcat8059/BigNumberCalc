@@ -48,10 +48,8 @@ void basic_test()
 
 void operator_test()
 {
-	int a = -13123, b = -123532;
-	BigNumber inta(a), intb(b);
-	cout << abs(inta) % abs(intb) << endl; 
-	cout << abs(intb) % abs(inta) << endl;
+	BigNumber floata("1.1"), floatb("2.1");
+	cout << floata/floatb << endl;
 
 }
 
