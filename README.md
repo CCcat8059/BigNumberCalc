@@ -56,7 +56,6 @@
 - BN(string)
 - BN(BN) (copy constructor)
 - BN(int)
-- BN(double)
 - BN(numerator, denominator)
 
 
@@ -114,3 +113,8 @@ return 1/num
 return gcd
 ### lcm
 return lcm
+### power
+return base ^ num  
+TODO
+### factorial
+return num!
