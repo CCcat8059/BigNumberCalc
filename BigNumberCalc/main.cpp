@@ -9,10 +9,10 @@ void relational_test();
 void output_div_test();
 int main(int argc, char* argv[])
 {
-	//basic_test();
-	 operator_test();
+	// basic_test();
+	// operator_test();
 	// relational_test();
-	//output_div_test();
+	// output_div_test();
 	return 0;
 }
 
@@ -48,15 +48,15 @@ void basic_test()
 }
 void operator_test()
 {
-
-	//BigNumber inta("-5"), intb("3");
-	//cout << inta * intb << endl;
 	
-	BigNumber floata("-5.123481231"), floatb("2.0");
-	//cout << floata << endl;
-	//cout << floatb << endl;
-	cout << floata * floatb << endl;
-	cout << floata / floatb << endl;
+	BigNumber floata("3","7"), floatb("1","3");
+	cout << floata << endl;
+	cout << floatb << endl;
+	// cout << floata + floatb << endl;
+	cout << floata - floatb << endl;
+	cout << floatb - floata << endl;
+	// cout << floata * floatb << endl;
+	// cout << floata / floatb << endl;
 	
 
 }

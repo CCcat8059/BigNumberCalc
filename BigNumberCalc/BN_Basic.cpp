@@ -79,6 +79,7 @@ BigNumber::BigNumber(const double& num)
 	std::stringstream ss;
 	ss << num;
 	new (this) BigNumber(ss.str());
+	isInt = false;
 }
 
 BigNumber::BigNumber(std::string numerator, std::string denominator)

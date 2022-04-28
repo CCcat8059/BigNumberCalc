@@ -65,6 +65,8 @@ public:
 	friend BigNumber reciprocal(BigNumber);
 	friend BigNumber gcd(const BigNumber&, const BigNumber&);
 	friend BigNumber lcm(const BigNumber&, const BigNumber&);
+	friend BigNumber power(const BigNumber&, const BigNumber&);
+	// others
 	friend void parseStrToBN(BigNumber*, const std::string);
 #pragma endregion
 
