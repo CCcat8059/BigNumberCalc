@@ -8,17 +8,7 @@ BigNumber operator+(const BigNumber& a, const BigNumber& b)
 	{
 		result = basicAdd(a, b);
 	}
-	else if (!a.isInt && !b.isInt) // both are float
-	{
-		BigNumber a1(a.numerator), a2(a.denominator), b1(b.numerator), b2(b.denominator);
-		BigNumber c11(a1 * b2), c12(a2 * b1), c2(a2 * b2);
-		c11.sign = a.sign;
-		c12.sign = b.sign;
-		result = c11 + c12;
-		result.denominator = c2.numerator;
-		result.isInt = 0;
-	}
-	else // a and b are not the same type
+	else // at least one of a and b is float 
 	{
 		BigNumber a1(a.numerator), a2(a.denominator), b1(b.numerator), b2(b.denominator);
 		BigNumber c11(a1 * b2), c12(a2 * b1), c2(a2 * b2);
@@ -50,18 +40,7 @@ BigNumber operator-(const BigNumber& a, const BigNumber& b)
 	{
 		result = basicSub(a, b);
 	}
-	else if (!a.isInt && !b.isInt) // both are float
-	{
-		// ¥ý³q¤À
-		BigNumber a1(a.numerator), a2(a.denominator), b1(b.numerator), b2(b.denominator);
-		BigNumber c11(a1 * b2), c12(a2 * b1), c2(a2 * b2);
-		c11.sign = a.sign;
-		c12.sign = b.sign;
-		result = c11 - c12;
-		result.denominator = c2.numerator;
-		result.isInt = 0;
-	}
-	else // a and b are not the same type
+	else // at least one of a and b is float 
 	{
 		BigNumber a1(a.numerator), a2(a.denominator), b1(b.numerator), b2(b.denominator);
 		BigNumber c11(a1 * b2), c12(a2 * b1), c2(a2 * b2);
@@ -94,14 +73,7 @@ BigNumber operator*(const BigNumber& a, const BigNumber& b)
 	{
 		result = basicMul(a, b);
 	}
-	else if (!a.isInt && !b.isInt) // both are float
-	{
-		BigNumber a1(a.numerator), a2(a.denominator), b1(b.numerator), b2(b.denominator);
-		result.numerator = (a1 * b1).numerator;
-		result.denominator = (a2 * b2).numerator;
-		result.isInt = 0;
-	}
-	else // a and b are not the same type
+	else // at least one of a and b is float 
 	{
 		BigNumber a1(a.numerator), a2(a.denominator), b1(b.numerator), b2(b.denominator);
 		result.numerator = (a1 * b1).numerator;
@@ -131,16 +103,8 @@ BigNumber operator/(const BigNumber& a, const BigNumber& b)
 	{
 		result = basicDiv(a, b);
 	}
-	else if (!a.isInt && !b.isInt) // both are float
+	else // at least one of a and b is float 
 	{
-		BigNumber a1(a.numerator), a2(a.denominator), b1(b.numerator), b2(b.denominator);
-		result.numerator = (a1 * b2).numerator;
-		result.denominator = (a2 * b1).numerator;
-		result.isInt = 0;
-	}
-	else // a and b are not the same type
-	{
-		// TODO
 		BigNumber a1(a.numerator), a2(a.denominator), b1(b.numerator), b2(b.denominator);
 		result.numerator = (a1 * b2).numerator;
 		result.denominator = (a2 * b1).numerator;

@@ -198,3 +198,9 @@ BigNumber lcm(const BigNumber& a, const BigNumber& b)
 {
 	return (a * b) / gcd(a, b);
 }
+
+BigNumber power(const BigNumber& base, const BigNumber& num)
+{
+	// TODO only base^(0.5*n) n is integer
+	return BigNumber();
+}
