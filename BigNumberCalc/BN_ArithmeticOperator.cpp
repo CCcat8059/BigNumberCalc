@@ -17,6 +17,7 @@ BigNumber operator+(const BigNumber& a, const BigNumber& b)
 		result = c11 + c12;
 		result.denominator = c2.numerator;
 		result.isInt = 0;
+		simplifyNum(result);
 	}
 	return result;
 }
@@ -49,6 +50,7 @@ BigNumber operator-(const BigNumber& a, const BigNumber& b)
 		result = c11 - c12;
 		result.denominator = c2.numerator;
 		result.isInt = 0;
+		simplifyNum(result);
 	}
 	return result;
 }
@@ -79,6 +81,7 @@ BigNumber operator*(const BigNumber& a, const BigNumber& b)
 		result.numerator = (a1 * b1).numerator;
 		result.denominator = (a2 * b2).numerator;
 		result.isInt = 0;
+		simplifyNum(result);
 	}
 	return result;
 }
@@ -109,6 +112,7 @@ BigNumber operator/(const BigNumber& a, const BigNumber& b)
 		result.numerator = (a1 * b2).numerator;
 		result.denominator = (a2 * b1).numerator;
 		result.isInt = 0;
+		simplifyNum(result);
 	}
 	return result;
 }

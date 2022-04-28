@@ -124,7 +124,10 @@ BigNumber basicDiv(const BigNumber& a, const BigNumber& b)
 	// integer division
 	BigNumber result;
 	if (b.numerator == "0")
-		throw "warning: division by zero\n";
+	{
+		std::cout << "warning: division by zero.\n";
+		return result;
+	}
 
 	result.sign = a.sign ^ b.sign;
 	if (b.numerator == "1")
@@ -201,6 +204,37 @@ BigNumber lcm(const BigNumber& a, const BigNumber& b)
 
 BigNumber power(const BigNumber& base, const BigNumber& num)
 {
-	// TODO only base^(0.5*n) n is integer
+	// only for base ^ (0.5 * n) and n is integer
+	BigNumber result;
+	if (!isValidPower(num))
+	{
+		std::cout << "warning: power must be integral multiple.\n";
+		return result;
+	}
+	// TODO
 	return BigNumber();
+}
+
+bool isValidPower(const BigNumber& powerNum)
+{
+	// only bigger than 0.5
+	BigNumber base("0.5");
+	std::cout << (powerNum / base) << '\n';
+	if ((powerNum / base).denominator != "1")
+		return false;
+	return true;
+}
+
+void simplifyNum(BigNumber& num)
+{
+	if (num.numerator == num.denominator)
+	{
+		num.numerator = "1";
+		num.denominator = "1";
+		return;
+	}
+	BigNumber numerator(num.numerator), denominator(num.denominator);
+	BigNumber GCD = gcd(numerator, denominator);
+	num.numerator = (numerator / GCD).numerator;
+	num.denominator = (denominator / GCD).numerator;
 }
