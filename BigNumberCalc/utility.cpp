@@ -215,6 +215,30 @@ BigNumber power(const BigNumber& base, const BigNumber& num)
 	return BigNumber();
 }
 
+BigNumber factorial(const BigNumber& num)
+{
+	if (!num.isInt)
+	{
+		std::cout << "warning: float can't do factorial.\n";
+		return BigNumber();
+	}
+	else if (num.sign)
+	{
+		std::cout << "warning: negative integer can't do factorial.\n";
+		return BigNumber();
+	}
+	else if (num.numerator == "0" || num.numerator == "1")
+		return BigNumber("1");
+
+	// TODO optimize Big(O)
+	BigNumber result("2");
+	for (BigNumber i("3"); i <= num; i += 1)
+	{
+		result *= i;
+	}
+	return result;
+}
+
 bool isValidPower(const BigNumber& powerNum)
 {
 	// only bigger than 0.5

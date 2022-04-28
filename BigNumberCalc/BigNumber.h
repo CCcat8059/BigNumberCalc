@@ -65,6 +65,7 @@ public:
 	friend BigNumber gcd(const BigNumber&, const BigNumber&);
 	friend BigNumber lcm(const BigNumber&, const BigNumber&);
 	friend BigNumber power(const BigNumber&, const BigNumber&);
+	friend BigNumber factorial(const BigNumber&);
 	// others
 	friend void parseStrToBN(BigNumber*, const std::string);
 	friend bool isValidPower(const BigNumber&);

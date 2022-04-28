@@ -48,8 +48,8 @@ void basic_test()
 }
 void operator_test()
 {
-	
-	BigNumber floata("3","7"), floatb("1","3");
+
+	BigNumber floata("3", "7"), floatb("1", "3");
 	cout << floata << endl;
 	cout << floatb << endl;
 	// cout << floata + floatb << endl;
@@ -57,7 +57,7 @@ void operator_test()
 	cout << floatb - floata << endl;
 	// cout << floata * floatb << endl;
 	// cout << floata / floatb << endl;
-	
+
 
 }
 void relational_test()
@@ -80,7 +80,7 @@ void relational_test()
 	cout << intd << " > " << intb << (intd > intb ? " yes" : " no") << '\n';
 	cout << intd << " > " << intc << (intd > intc ? " yes" : " no") << '\n';
 }
-void output_div_test() 
+void output_div_test()
 {
 	//BigNumber floata("101230", "1231233");
 	//BigNumber floata("22", "222");
