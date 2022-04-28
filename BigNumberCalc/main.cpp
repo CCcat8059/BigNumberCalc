@@ -9,10 +9,10 @@ void relational_test();
 void output_div_test();
 int main(int argc, char* argv[])
 {
-	basic_test();
-	// operator_test();
+	//basic_test();
+	 operator_test();
 	// relational_test();
-	// output_div_test();
+	//output_div_test();
 	return 0;
 }
 
@@ -48,19 +48,16 @@ void basic_test()
 }
 void operator_test()
 {
-	int a = -13123, b = 578678;
-	BigNumber inta(a), intb(b);
-	cout << a % b << ' ' << inta % intb << '\n';
-	cout << b % a << ' ' << intb % inta << '\n';
 
-	cout << abs(a) % b << ' ' << abs(inta) % intb << '\n';
-	cout << b % abs(a) << ' ' << intb % abs(inta) << '\n';
-
-	cout << a % abs(b) << ' ' << inta % abs(intb) << '\n';
-	cout << abs(b) % a << ' ' << abs(intb) % inta << '\n';
-
-	cout << abs(a) % abs(b) << ' ' << abs(inta) % abs(intb) << '\n';
-	cout << abs(b) % abs(a) << ' ' << abs(intb) % abs(inta) << '\n';
+	//BigNumber inta("-5"), intb("3");
+	//cout << inta * intb << endl;
+	
+	BigNumber floata("-5.123481231"), floatb("2.0");
+	//cout << floata << endl;
+	//cout << floatb << endl;
+	cout << floata * floatb << endl;
+	cout << floata / floatb << endl;
+	
 
 }
 void relational_test()
@@ -85,6 +82,8 @@ void relational_test()
 }
 void output_div_test() 
 {
-	BigNumber floata("101230", "1231233");
+	//BigNumber floata("101230", "1231233");
+	//BigNumber floata("22", "222");
+	BigNumber floata("40000", "3");
 	cout << floata;
 }
