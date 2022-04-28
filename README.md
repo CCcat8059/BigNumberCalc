@@ -2,34 +2,26 @@
 ## BN_ArithmeticOperator
 ### operator +
 - BNint and BNint
-- BNint and BNfloat  
-TODO
-- BNfloat and BNfloat  
-TODO
+- BNint and BNfloat
+- BNfloat and BNfloat
 - BNint and int (or int and BNint)
 
 ### operator -
 - BNint and BNint
-- BNint and BNfloat  
-TODO
-- BNfloat and BNfloat  
-TODO
+- BNint and BNfloat
+- BNfloat and BNfloat
 - BNint and int (or int and BNint)
 
 ### operator *
 - BNint and BNint
-- BNint and BNfloat  
-TODO
-- BNfloat and BNfloat  
-TODO
+- BNint and BNfloat
+- BNfloat and BNfloat
 - BNint and int (or int and BNint)
 
 ### operator /
 - BNint and BNint
-- BNint and BNfloat  
-TODO
-- BNfloat and BNfloat  
-TODO
+- BNint and BNfloat
+- BNfloat and BNfloat
 - BNint and int (or int and BNint)
 
 ### operator %
@@ -71,8 +63,7 @@ TODO
 ## BN_OtherOperator
 ### operator <<
 - denominator is 10^n
-- other numerator and denominator (e.g 1/3, 3/7)  
-TODO
+- other numerator and denominator (e.g 1/3, 3/7)
 
 
 ## BN_RelationalOperator
