@@ -23,8 +23,7 @@ public:
 	BigNumber();
 	BigNumber(const std::string);
 	BigNumber(const BigNumber&);
-	BigNumber(const int&);
-	BigNumber(const double&);
+	BigNumber(const long long&);
 	BigNumber(std::string, std::string);
 #pragma endregion
 
@@ -65,7 +64,12 @@ public:
 	friend BigNumber reciprocal(BigNumber);
 	friend BigNumber gcd(const BigNumber&, const BigNumber&);
 	friend BigNumber lcm(const BigNumber&, const BigNumber&);
+	friend BigNumber power(const BigNumber&, const BigNumber&);
+	friend BigNumber factorial(const BigNumber&);
+	// others
 	friend void parseStrToBN(BigNumber*, const std::string);
+	friend bool isValidPower(const BigNumber&);
+	friend void simplifyNum(BigNumber&);
 #pragma endregion
 
 #pragma region operator overloading with int

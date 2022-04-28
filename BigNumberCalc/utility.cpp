@@ -124,7 +124,10 @@ BigNumber basicDiv(const BigNumber& a, const BigNumber& b)
 	// integer division
 	BigNumber result;
 	if (b.numerator == "0")
-		throw "warning: division by zero\n";
+	{
+		std::cout << "warning: division by zero.\n";
+		return result;
+	}
 
 	result.sign = a.sign ^ b.sign;
 	if (b.numerator == "1")
@@ -197,4 +200,65 @@ BigNumber gcd(const BigNumber& a, const BigNumber& b)
 BigNumber lcm(const BigNumber& a, const BigNumber& b)
 {
 	return (a * b) / gcd(a, b);
+}
+
+BigNumber power(const BigNumber& base, const BigNumber& num)
+{
+	// only for base ^ (0.5 * n) and n is integer
+	BigNumber result;
+	if (!isValidPower(num))
+	{
+		std::cout << "warning: power must be integral multiple.\n";
+		return result;
+	}
+	// TODO
+	return BigNumber();
+}
+
+BigNumber factorial(const BigNumber& num)
+{
+	if (!num.isInt)
+	{
+		std::cout << "warning: float can't do factorial.\n";
+		return BigNumber();
+	}
+	else if (num.sign)
+	{
+		std::cout << "warning: negative integer can't do factorial.\n";
+		return BigNumber();
+	}
+	else if (num.numerator == "0" || num.numerator == "1")
+		return BigNumber("1");
+
+	// TODO optimize Big(O)
+	BigNumber result("2");
+	for (BigNumber i("3"); i <= num; i += 1)
+	{
+		result *= i;
+	}
+	return result;
+}
+
+bool isValidPower(const BigNumber& powerNum)
+{
+	// only bigger than 0.5
+	BigNumber base("0.5");
+	std::cout << (powerNum / base) << '\n';
+	if ((powerNum / base).denominator != "1")
+		return false;
+	return true;
+}
+
+void simplifyNum(BigNumber& num)
+{
+	if (num.numerator == num.denominator)
+	{
+		num.numerator = "1";
+		num.denominator = "1";
+		return;
+	}
+	BigNumber numerator(num.numerator), denominator(num.denominator);
+	BigNumber GCD = gcd(numerator, denominator);
+	num.numerator = (numerator / GCD).numerator;
+	num.denominator = (denominator / GCD).numerator;
 }

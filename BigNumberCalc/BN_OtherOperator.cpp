@@ -5,7 +5,6 @@ std::ostream& operator<<(std::ostream& os, BigNumber num)
 	if (num.sign)
 		os << '-';
 
-#ifndef _DEBUG
 	std::string output = num.numerator;
 	if (!num.isInt && num.denominator != "1")
 	{
@@ -21,7 +20,7 @@ std::ostream& operator<<(std::ostream& os, BigNumber num)
 		for (size_t i = 0; i <=10; i++)
 			base_num[i] = BN_Divisor * i;
 
-		long  index_decimalStart = Dividend.size() - Divisor.size();
+		long index_decimalStart = Dividend.size() - Divisor.size();
 		//std::cout << Dividend << '/' << Divisor << '.' << index_decimalStart << '\n';
 		//Dividend = "0" + Dividend;
 		for (long i = 0; i < index_decimalStart + 100; i++)
@@ -51,10 +50,9 @@ std::ostream& operator<<(std::ostream& os, BigNumber num)
 		}
 	}
 	os << output;
-#endif // !_DEBUG
 
 #ifdef _DEBUG
-	os << num.numerator << '\n';
+	os << '\n' << num.numerator << '\n';
 	os << num.denominator << '\n';
 	os << "isInt: " << num.isInt << " sign: " << num.sign;
 #endif // _DEBUG
