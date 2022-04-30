@@ -144,11 +144,13 @@
     <ClCompile Include="BN_ArithmeticOperator.cpp" />
     <ClCompile Include="BN_OtherOperator.cpp" />
     <ClCompile Include="BN_RelationalOperator.cpp" />
+    <ClCompile Include="InfixToPostfix.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="utility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BigNumber.h" />
+    <ClInclude Include="InfixToPostfix.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "BigNumber.h"
+#include "InfixToPostfix.h"
 
 using namespace std;
 void basic_test();
@@ -13,6 +14,10 @@ int main(int argc, char* argv[])
 	// operator_test();
 	// relational_test();
 	// output_div_test();
+	vector<string> prefix;
+	string input;
+	cin >> input;
+	cout << convert(input) << endl;
 	return 0;
 }
 
@@ -87,3 +92,4 @@ void output_div_test()
 	BigNumber floata("40000", "3");
 	cout << floata;
 }
+
