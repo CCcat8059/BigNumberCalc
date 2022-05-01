@@ -7,12 +7,14 @@ void basic_test();
 void operator_test();
 void relational_test();
 void output_div_test();
+void utility_test();
 int main(int argc, char* argv[])
 {
 	// basic_test();
 	// operator_test();
 	// relational_test();
 	// output_div_test();
+	utility_test();
 	return 0;
 }
 
@@ -86,4 +88,11 @@ void output_div_test()
 	//BigNumber floata("22", "222");
 	BigNumber floata("40000", "3");
 	cout << floata;
+}
+void utility_test()
+{
+	for (string input; cin >> input;)
+	{
+		cout << factorial(BigNumber(input)) << '\n';
+	}
 }
