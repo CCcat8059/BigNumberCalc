@@ -7,12 +7,14 @@ void basic_test();
 void operator_test();
 void relational_test();
 void output_div_test();
+void utility_test();
 int main(int argc, char* argv[])
 {
-	//basic_test();
+	// basic_test();
 	// operator_test();
 	// relational_test();
-	output_div_test();
+	// output_div_test();
+	utility_test();
 	return 0;
 }
 
@@ -48,19 +50,16 @@ void basic_test()
 }
 void operator_test()
 {
-	int a = -13123, b = 578678;
-	BigNumber inta(a), intb(b);
-	cout << a % b << ' ' << inta % intb << '\n';
-	cout << b % a << ' ' << intb % inta << '\n';
 
-	cout << abs(a) % b << ' ' << abs(inta) % intb << '\n';
-	cout << b % abs(a) << ' ' << intb % abs(inta) << '\n';
+	BigNumber floata("3", "7"), floatb("1", "3");
+	cout << floata << endl;
+	cout << floatb << endl;
+	// cout << floata + floatb << endl;
+	cout << floata - floatb << endl;
+	cout << floatb - floata << endl;
+	// cout << floata * floatb << endl;
+	// cout << floata / floatb << endl;
 
-	cout << a % abs(b) << ' ' << inta % abs(intb) << '\n';
-	cout << abs(b) % a << ' ' << abs(intb) % inta << '\n';
-
-	cout << abs(a) % abs(b) << ' ' << abs(inta) % abs(intb) << '\n';
-	cout << abs(b) % abs(a) << ' ' << abs(intb) % abs(inta) << '\n';
 
 }
 void relational_test()
@@ -83,10 +82,17 @@ void relational_test()
 	cout << intd << " > " << intb << (intd > intb ? " yes" : " no") << '\n';
 	cout << intd << " > " << intc << (intd > intc ? " yes" : " no") << '\n';
 }
-void output_div_test() 
+void output_div_test()
 {
 	//BigNumber floata("101230", "1231233");
 	//BigNumber floata("22", "222");
 	BigNumber floata("40000", "3");
 	cout << floata;
+}
+void utility_test()
+{
+	for (string input; cin >> input;)
+	{
+		cout << factorial(BigNumber(input)) << '\n';
+	}
 }

@@ -8,15 +8,17 @@ BigNumber operator+(const BigNumber& a, const BigNumber& b)
 	{
 		result = basicAdd(a, b);
 	}
-	else if (!a.isInt && !b.isInt) // both are float
+	else // at least one of a and b is float 
 	{
-		// TODO
+		BigNumber a1(a.numerator), a2(a.denominator), b1(b.numerator), b2(b.denominator);
+		BigNumber c11(a1 * b2), c12(a2 * b1), c2(a2 * b2);
+		c11.sign = a.sign;
+		c12.sign = b.sign;
+		result = c11 + c12;
+		result.denominator = c2.numerator;
+		result.isInt = 0;
+		simplifyNum(result);
 	}
-	else // a and b are not the same type
-	{
-		// TODO
-	}
-	// std::cout << a << " + " << b << " = " << result << '\n';
 	return result;
 }
 
@@ -39,13 +41,16 @@ BigNumber operator-(const BigNumber& a, const BigNumber& b)
 	{
 		result = basicSub(a, b);
 	}
-	else if (!a.isInt && !b.isInt) // both are float
+	else // at least one of a and b is float 
 	{
-		// TODO
-	}
-	else // a and b are not the same type
-	{
-		// TODO
+		BigNumber a1(a.numerator), a2(a.denominator), b1(b.numerator), b2(b.denominator);
+		BigNumber c11(a1 * b2), c12(a2 * b1), c2(a2 * b2);
+		c11.sign = a.sign;
+		c12.sign = b.sign;
+		result = c11 - c12;
+		result.denominator = c2.numerator;
+		result.isInt = 0;
+		simplifyNum(result);
 	}
 	return result;
 }
@@ -65,17 +70,18 @@ BigNumber operator-(const int& intA, const BigNumber& b)
 BigNumber operator*(const BigNumber& a, const BigNumber& b)
 {
 	BigNumber result;
+	result.sign = a.sign ^ b.sign;
 	if (a.isInt && b.isInt) // both are integer
 	{
 		result = basicMul(a, b);
 	}
-	else if (!a.isInt && !b.isInt) // both are float
+	else // at least one of a and b is float 
 	{
-		// TODO
-	}
-	else // a and b are not the same type
-	{
-		// TODO
+		BigNumber a1(a.numerator), a2(a.denominator), b1(b.numerator), b2(b.denominator);
+		result.numerator = (a1 * b1).numerator;
+		result.denominator = (a2 * b2).numerator;
+		result.isInt = 0;
+		simplifyNum(result);
 	}
 	return result;
 }
@@ -95,17 +101,18 @@ BigNumber operator*(const int& intA, const BigNumber& b)
 BigNumber operator/(const BigNumber& a, const BigNumber& b)
 {
 	BigNumber result;
+	result.sign = a.sign ^ b.sign;
 	if (a.isInt && b.isInt) // both are integer
 	{
 		result = basicDiv(a, b);
 	}
-	else if (!a.isInt && !b.isInt) // both are float
+	else // at least one of a and b is float 
 	{
-		// TODO
-	}
-	else // a and b are not the same type
-	{
-		// TODO
+		BigNumber a1(a.numerator), a2(a.denominator), b1(b.numerator), b2(b.denominator);
+		result.numerator = (a1 * b2).numerator;
+		result.denominator = (a2 * b1).numerator;
+		result.isInt = 0;
+		simplifyNum(result);
 	}
 	return result;
 }
@@ -141,5 +148,35 @@ BigNumber operator%(const BigNumber& a, const int& intB)
 BigNumber operator%(const int& intA, const BigNumber& b)
 {
 	return BigNumber(intA) % b;
+}
+#pragma endregion
+
+#pragma region operator++
+BigNumber& BigNumber::operator++()
+{
+	*this = *this + BigNumber("1");
+	return *this;
+}
+
+BigNumber BigNumber::operator++(int cnt)
+{
+	BigNumber temp = *this;
+	++(*this);
+	return temp;
+}
+#pragma endregion
+
+#pragma region operator--
+BigNumber& BigNumber::operator--()
+{
+	*this = *this - BigNumber("1");
+	return *this;
+}
+
+BigNumber BigNumber::operator--(int cnt)
+{
+	BigNumber temp = *this;
+	--(*this);
+	return temp;
 }
 #pragma endregion

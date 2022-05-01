@@ -2,40 +2,34 @@
 ## BN_ArithmeticOperator
 ### operator +
 - BNint and BNint
-- BNint and BNfloat  
-TODO
-- BNfloat and BNfloat  
-TODO
+- BNint and BNfloat
+- BNfloat and BNfloat
 - BNint and int (or int and BNint)
 
 ### operator -
 - BNint and BNint
-- BNint and BNfloat  
-TODO
-- BNfloat and BNfloat  
-TODO
+- BNint and BNfloat
+- BNfloat and BNfloat
 - BNint and int (or int and BNint)
 
 ### operator *
 - BNint and BNint
-- BNint and BNfloat  
-TODO
-- BNfloat and BNfloat  
-TODO
+- BNint and BNfloat
+- BNfloat and BNfloat
 - BNint and int (or int and BNint)
 
 ### operator /
 - BNint and BNint
-- BNint and BNfloat  
-TODO
-- BNfloat and BNfloat  
-TODO
+- BNint and BNfloat
+- BNfloat and BNfloat
 - BNint and int (or int and BNint)
 
 ### operator %
 - BNint and BNint
 - BNint and int (or int and BNint)
 
+### operator ++
+### operator --
 
 ## BN_AssignmentOperator
 ### operator =
@@ -63,16 +57,17 @@ TODO
 - BN()
 - BN(string)
 - BN(BN) (copy constructor)
+- BN(short)
 - BN(int)
+- BN(long long)
 - BN(double)
-- BN(numerator, denominator)
+- BN(string, string)
 
 
 ## BN_OtherOperator
 ### operator <<
 - denominator is 10^n
-- other numerator and denominator (e.g 1/3, 3/7)  
-TODO
+- other numerator and denominator (e.g 1/3, 3/7)
 
 
 ## BN_RelationalOperator
@@ -123,3 +118,12 @@ return 1/num
 return gcd
 ### lcm
 return lcm
+### power
+return base ^ num  
+TODO
+### factorial
+return num!
+### isValidPower
+return if the power number valid (0.5 * n and n is integer)
+### simplifyNum
+make num be irreducible fraction (3/6 -> 1/2)
