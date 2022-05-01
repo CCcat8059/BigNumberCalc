@@ -59,19 +59,3 @@ std::ostream& operator<<(std::ostream& os, BigNumber num)
 
 	return os;
 } 
-/*
-std::istream& operator>>(std::istream& is, BigNumber& BN)
-{
-	// TODO: insert return statement here
-	std::string inputTemp;
-	is >> inputTemp;
-	if (isBigNumber(inputTemp)) {
-		BigNumber BNTemp(inputTemp);
-		BN = BNTemp;
-	}
-	else {
-		
-	}
-	return is;
-}
-*/

@@ -4,6 +4,14 @@
 // 判斷輸入的運算式是否合法
 bool inputIsValid(std::string);
 
+//
+bool isSymbol(char);
+// 對字串格式化，避免+跟-一元的狀況 Ex. 1+++++1 => 1 + 1
+std::string format(std::string);
+
+// replace any op to " op "
+std::string replace(std::string);
+
 // 判斷運算符號的優先順序
 int priority(std::string alpha);
 
