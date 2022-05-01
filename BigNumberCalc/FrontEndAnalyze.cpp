@@ -26,6 +26,10 @@ bool inputIsValid(std::string input) {
         }
         return false;
     }
+    if (input.size() == 0) {
+        std::cout << "Error: Input is empty." << std::endl;
+        return false;
+    }
     return true;
    
     
@@ -249,6 +253,10 @@ BigNumber convert(std::string infix) {
             num.push(Caculate(a, b, op.top()));
         }
         op.pop();
+    }
+    if (num.size() == 0) {
+        std::cout << "Error: Input is empty." << std::endl;
+        return BigNumber();
     }
     return num.top();
 }
