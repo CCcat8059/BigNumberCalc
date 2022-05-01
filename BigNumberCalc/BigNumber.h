@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <stack>
+#include <queue>
 class BigNumber
 {
 private:
@@ -52,6 +53,7 @@ public:
 	friend bool operator<=(const BigNumber&, const BigNumber&);
 
 	friend std::ostream& operator<<(std::ostream&, BigNumber);
+	friend std::istream& operator>>(std::istream&, std::string);
 #pragma endregion
 
 #pragma region utility

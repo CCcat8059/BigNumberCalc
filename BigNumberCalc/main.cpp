@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "BigNumber.h"
-#include "InfixToPostfix.h"
+#include "FrontEndAnalyze.h"
 
 using namespace std;
 void basic_test();
@@ -14,10 +14,11 @@ int main(int argc, char* argv[])
 	// operator_test();
 	// relational_test();
 	// output_div_test();
-	vector<string> prefix;
 	string input;
-	cin >> input;
-	cout << convert(input) << endl;
+	// ( 1 + 2 ) * 3
+	// ！！ 輸入一定要用getline ！！
+	getline(cin, input);
+	cout << convert(input);
 	return 0;
 }
 
