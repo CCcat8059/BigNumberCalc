@@ -76,6 +76,8 @@ public:
 	friend BigNumber lcm(const BigNumber&, const BigNumber&);
 	friend BigNumber power(const BigNumber&, const BigNumber&);
 	friend BigNumber factorial(const BigNumber&);
+	friend BigNumber root(const BigNumber&);
+	friend std::string basicRoot(std::string);
 	// others
 	friend bool isValidPower(const BigNumber&);
 	friend void simplifyNum(BigNumber&);
