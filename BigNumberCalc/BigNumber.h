@@ -78,6 +78,9 @@ public:
 	friend BigNumber lcm(const BigNumber&, const BigNumber&);
 	friend BigNumber power(const BigNumber&, const BigNumber&);
 	friend BigNumber factorial(const BigNumber&);
+	// type convert
+	friend BigNumber intToFloat(BigNumber);
+	friend BigNumber floatToInt(BigNumber);
 	// others
 	friend bool isValidPower(const BigNumber&);
 	friend void simplifyNum(BigNumber&);

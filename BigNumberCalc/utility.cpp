@@ -239,6 +239,18 @@ BigNumber factorial(const BigNumber& num)
 	return result;
 }
 
+BigNumber intToFloat(BigNumber num)
+{
+	num.isInt = false;
+	return num;
+}
+
+BigNumber floatToInt(BigNumber num)
+{
+	BigNumber temp = BigNumber(num.numerator) / BigNumber(num.denominator);
+	return temp;
+}
+
 bool isValidPower(const BigNumber& powerNum)
 {
 	// only bigger than 0.5
