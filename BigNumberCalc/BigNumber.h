@@ -6,6 +6,8 @@
 #include <iomanip>
 #include <string>
 #include <vector>
+#include <stack>
+#include <queue>
 class BigNumber
 {
 private:

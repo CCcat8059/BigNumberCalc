@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "BigNumber.h"
+#include "FrontEndAnalyze.h"
 
 using namespace std;
 void basic_test();
@@ -14,7 +15,12 @@ int main(int argc, char* argv[])
 	// operator_test();
 	// relational_test();
 	// output_div_test();
-	utility_test();
+	// utility_test();
+	string input;
+	// ( 1 + 2 ) * 3
+	// �I�I ��J�@�w�n��getline �I�I
+	getline(cin, input);
+	cout << convert(input);
 	return 0;
 }
 
