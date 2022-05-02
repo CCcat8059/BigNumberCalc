@@ -8,15 +8,17 @@ void basic_test();
 void operator_test();
 void relational_test();
 void output_div_test();
+void utility_test();
 int main(int argc, char* argv[])
 {
 	// basic_test();
 	// operator_test();
 	// relational_test();
 	// output_div_test();
+	// utility_test();
 	string input;
 	// ( 1 + 2 ) * 3
-	// ¡I¡I ¿é¤J¤@©w­n¥Îgetline ¡I¡I
+	// ï¿½Iï¿½I ï¿½ï¿½Jï¿½@ï¿½wï¿½nï¿½ï¿½getline ï¿½Iï¿½I
 	getline(cin, input);
 	cout << convert(input);
 	return 0;
@@ -93,4 +95,10 @@ void output_div_test()
 	BigNumber floata("40000", "3");
 	cout << floata;
 }
-
+void utility_test()
+{
+	for (string input; cin >> input;)
+	{
+		cout << factorial(BigNumber(input)) << '\n';
+	}
+}

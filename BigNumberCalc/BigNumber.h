@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <cstring>
+#include <iomanip>
 #include <string>
 #include <vector>
 #include <stack>
@@ -23,9 +24,14 @@ private:
 public:
 #pragma region Constructor
 	BigNumber();
+	// create an object from single number
 	BigNumber(const std::string);
 	BigNumber(const BigNumber&);
+	BigNumber(const short&);
+	BigNumber(const int&);
 	BigNumber(const long long&);
+	BigNumber(const double&);
+	// create an object from numerator and denominator
 	BigNumber(std::string, std::string);
 #pragma endregion
 
@@ -43,6 +49,10 @@ public:
 	friend BigNumber operator*(const BigNumber&, const BigNumber&);
 	friend BigNumber operator/(const BigNumber&, const BigNumber&);
 	friend BigNumber operator%(const BigNumber&, const BigNumber&);
+	BigNumber& operator++();
+	BigNumber operator++(int);
+	BigNumber& operator--();
+	BigNumber operator--(int);
 
 
 	friend bool operator==(const BigNumber&, const BigNumber&);
@@ -69,7 +79,6 @@ public:
 	friend BigNumber power(const BigNumber&, const BigNumber&);
 	friend BigNumber factorial(const BigNumber&);
 	// others
-	friend void parseStrToBN(BigNumber*, const std::string);
 	friend bool isValidPower(const BigNumber&);
 	friend void simplifyNum(BigNumber&);
 #pragma endregion

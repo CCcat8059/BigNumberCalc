@@ -28,6 +28,8 @@
 - BNint and BNint
 - BNint and int (or int and BNint)
 
+### operator ++
+### operator --
 
 ## BN_AssignmentOperator
 ### operator =
@@ -55,8 +57,11 @@
 - BN()
 - BN(string)
 - BN(BN) (copy constructor)
+- BN(short)
 - BN(int)
-- BN(numerator, denominator)
+- BN(long long)
+- BN(double)
+- BN(string, string)
 
 
 ## BN_OtherOperator
@@ -118,3 +123,7 @@ return base ^ num
 TODO
 ### factorial
 return num!
+### isValidPower
+return if the power number valid (0.5 * n and n is integer)
+### simplifyNum
+make num be irreducible fraction (3/6 -> 1/2)

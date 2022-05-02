@@ -232,7 +232,7 @@ BigNumber factorial(const BigNumber& num)
 
 	// TODO optimize Big(O)
 	BigNumber result("2");
-	for (BigNumber i("3"); i <= num; i += 1)
+	for (BigNumber i("3"); i <= num; i++)
 	{
 		result *= i;
 	}
@@ -251,6 +251,8 @@ bool isValidPower(const BigNumber& powerNum)
 
 void simplifyNum(BigNumber& num)
 {
+	if (!num.isInt)
+		return;
 	if (num.numerator == num.denominator)
 	{
 		num.numerator = "1";

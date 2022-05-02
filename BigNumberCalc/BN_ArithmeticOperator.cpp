@@ -150,3 +150,33 @@ BigNumber operator%(const int& intA, const BigNumber& b)
 	return BigNumber(intA) % b;
 }
 #pragma endregion
+
+#pragma region operator++
+BigNumber& BigNumber::operator++()
+{
+	*this = *this + BigNumber("1");
+	return *this;
+}
+
+BigNumber BigNumber::operator++(int cnt)
+{
+	BigNumber temp = *this;
+	++(*this);
+	return temp;
+}
+#pragma endregion
+
+#pragma region operator--
+BigNumber& BigNumber::operator--()
+{
+	*this = *this - BigNumber("1");
+	return *this;
+}
+
+BigNumber BigNumber::operator--(int cnt)
+{
+	BigNumber temp = *this;
+	--(*this);
+	return temp;
+}
+#pragma endregion
