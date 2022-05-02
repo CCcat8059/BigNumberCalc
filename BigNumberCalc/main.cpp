@@ -11,16 +11,11 @@ void output_div_test();
 void utility_test();
 int main(int argc, char* argv[])
 {
-	// basic_test();
-	// operator_test();
-	// relational_test();
-	// output_div_test();
-	// utility_test();
-	string input;
 	// ( 1 + 2 ) * 3
 	// �I�I ��J�@�w�n��getline �I�I
-	getline(cin, input);
-	cout << convert(input);
+
+	for (string input; getline(cin, input);)
+		cout << convert(input) << '\n';
 	return 0;
 }
 
