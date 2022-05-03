@@ -61,7 +61,6 @@ std::ostream& operator<<(std::ostream& os, BigNumber num)
 		}
 	}
 	
-	
 	os << output;
 
 #ifdef _DEBUG

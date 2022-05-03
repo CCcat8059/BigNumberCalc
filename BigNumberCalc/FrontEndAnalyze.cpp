@@ -7,12 +7,20 @@ bool inputIsValid(std::string input)
 		std::cout << "Error: Input is empty." << std::endl;
 		return false;
 	}
-
-	bool alphaFlag = false, invalidSymbol = false;
+	int dotNumber = 0;
+	bool alphaFlag = false, invalidSymbol = false, dotFlag = false;
 	// alpha or not symbol of operation is unacceptable.
 	for (int i = 0; i < input.size(); i++)
 	{
-		if (isdigit(input[i]) || input[i] == '.' || input[i] == ' ')
+		if (input[i] == '.') 
+		{
+			dotNumber++;
+			if (dotNumber > 1) 
+			{
+				dotFlag = true;
+			}
+		}
+		else if (isdigit(input[i]) || input[i] == ' ')
 			continue;
 		else if (isSymbol(input[i]))
 			continue;
@@ -21,14 +29,16 @@ bool inputIsValid(std::string input)
 		else
 			invalidSymbol = true;
 	}
-	if (alphaFlag || invalidSymbol)
+	if (alphaFlag || invalidSymbol || dotFlag)
 	{
 		if (alphaFlag)
 			std::cout << "Error: Input is invalid, using alpha." << std::endl;
 
 		if (invalidSymbol)
 			std::cout << "Error: Input is invalid, using invalid symbol" << std::endl;
-
+		
+		if (dotFlag)
+			std::cout << "Error: Number of dot in input have more then one." << std::endl;
 		return false;
 	}
 	return true;
