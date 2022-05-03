@@ -219,11 +219,20 @@ BigNumber power(const BigNumber& base, const BigNumber& num)
 		result = result * base;
 		index++;
 	}
+
 	//std::cout << result << '\n';
-	if (num- index == BigNumber("0.5")) {
-		result = root(result);
+	if (abs(num)- index == BigNumber("0.5")) {
+		result = result * root(base);
 	}
-	// TODO
+	//std::cout << result << '\n';
+	if (num.sign==1) {
+		std::string temp = result.numerator;
+		result.numerator = result.denominator;
+		result.denominator = temp;
+		if (result.denominator != "1")
+			result.isInt = 0;
+	}
+
 	return result;
 }
 
@@ -315,7 +324,7 @@ std::string basicRoot(std::string inpNum) {
 		}
 		
 		remainder = remainder_num.numerator;
-		//r=
+
 	}
 	return result;
 }
