@@ -2,8 +2,13 @@
 
 bool inputIsValid(std::string input)
 {
-	bool alphaFlag = 0;
-	bool invalidSymbol = 0;
+	if (input.empty())
+	{
+		std::cout << "Error: Input is empty." << std::endl;
+		return false;
+	}
+
+	bool alphaFlag = false, invalidSymbol = false;
 	// alpha or not symbol of operation is unacceptable.
 	for (int i = 0; i < input.size(); i++)
 	{
@@ -12,9 +17,9 @@ bool inputIsValid(std::string input)
 		else if (isSymbol(input[i]))
 			continue;
 		else if (isalpha(input[i]))
-			alphaFlag = 1;
+			alphaFlag = true;
 		else
-			invalidSymbol = 1;
+			invalidSymbol = true;
 	}
 	if (alphaFlag || invalidSymbol)
 	{
@@ -24,12 +29,6 @@ bool inputIsValid(std::string input)
 		if (invalidSymbol)
 			std::cout << "Error: Input is invalid, using invalid symbol" << std::endl;
 
-		return false;
-	}
-
-	if (input.size() == 0)
-	{
-		std::cout << "Error: Input is empty." << std::endl;
 		return false;
 	}
 	return true;
