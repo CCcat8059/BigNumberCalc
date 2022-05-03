@@ -1,4 +1,5 @@
 #include <iostream>
+#include <chrono>
 
 #include "BigNumber.h"
 #include "FrontEndAnalyze.h"
@@ -9,16 +10,28 @@ void operator_test();
 void relational_test();
 void output_div_test();
 void utility_test();
+void root_test();
 int main(int argc, char* argv[])
 {
+
+	auto start = chrono::steady_clock::now();
+	cout << factorial(BigNumber(100000)) << "\n\n";
+	auto end = chrono::steady_clock::now();
+	cout << chrono::duration_cast<chrono::milliseconds>(end - start).count();
 	// ( 1 + 2 ) * 3
 	// �I�I ��J�@�w�n��getline �I�I
 
 	for (string input; getline(cin, input);)
 		cout << convert(input) << '\n';
+
 	return 0;
 }
-
+void root_test() {
+	BigNumber floata("2.0");
+	BigNumber floatb("900000876543218000000000765432345673456");
+	cout << power(floata, BigNumber("2345.5"))<<std::endl;
+	cout << root(floatb);
+}
 void basic_test()
 {
 	BigNumber inta("789");
@@ -87,7 +100,7 @@ void output_div_test()
 {
 	//BigNumber floata("101230", "1231233");
 	//BigNumber floata("22", "222");
-	BigNumber floata("40000", "3");
+	BigNumber floata("10000", "3");
 	cout << floata;
 }
 void utility_test()

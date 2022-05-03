@@ -205,14 +205,26 @@ BigNumber lcm(const BigNumber& a, const BigNumber& b)
 BigNumber power(const BigNumber& base, const BigNumber& num)
 {
 	// only for base ^ (0.5 * n) and n is integer
-	BigNumber result;
+	BigNumber result(1);
 	if (!isValidPower(num))
 	{
 		std::cout << "warning: power must be integral multiple.\n";
-		return result;
+		return base;
+	}
+	BigNumber index(0);
+	BigNumber num_int = basicDiv(BigNumber(num.numerator), BigNumber(num.denominator));
+	
+	while (num_int > index)
+	{
+		result = result * base;
+		index++;
+	}
+	//std::cout << result << '\n';
+	if (num- index == BigNumber("0.5")) {
+		result = root(result);
 	}
 	// TODO
-	return BigNumber();
+	return result;
 }
 
 BigNumber factorial(const BigNumber& num)
@@ -239,11 +251,23 @@ BigNumber factorial(const BigNumber& num)
 	return result;
 }
 
+BigNumber intToFloat(BigNumber num)
+{
+	num.isInt = false;
+	return num;
+}
+
+BigNumber floatToInt(BigNumber num)
+{
+	BigNumber temp = BigNumber(num.numerator) / BigNumber(num.denominator);
+	return temp;
+}
+
 bool isValidPower(const BigNumber& powerNum)
 {
 	// only bigger than 0.5
 	BigNumber base("0.5");
-	std::cout << (powerNum / base) << '\n';
+	//std::cout << (powerNum / base) << '\n';
 	if ((powerNum / base).denominator != "1")
 		return false;
 	return true;
@@ -251,7 +275,7 @@ bool isValidPower(const BigNumber& powerNum)
 
 void simplifyNum(BigNumber& num)
 {
-	if (!num.isInt)
+	if (num.isInt)
 		return;
 	if (num.numerator == num.denominator)
 	{
@@ -263,4 +287,42 @@ void simplifyNum(BigNumber& num)
 	BigNumber GCD = gcd(numerator, denominator);
 	num.numerator = (numerator / GCD).numerator;
 	num.denominator = (denominator / GCD).numerator;
+}
+std::string basicRoot(std::string inpNum) {
+	BigNumber rootedNum(0);
+	std::string remainder="";
+	std::string result = "";
+	if (inpNum.size() % 2 != 0) {
+		inpNum = '0' + inpNum;
+	}
+	for (size_t i = 0; i < 100; i++)
+	{
+		inpNum = inpNum + "00";
+	}
+	for (int i = 0; i < inpNum.size(); i += 2) {
+		remainder += inpNum.substr(i, 2);
+		BigNumber remainder_num(remainder);
+		
+		for (BigNumber i(0); i <= 10; i++)
+		{
+			//std::cout << ((rootedNum * 10) + i) * i << " , " << remainder_num << " , " << i << '\n';
+			if (((rootedNum * 10) + i) * i > remainder_num) {
+				remainder_num = remainder_num - (rootedNum * 10 + (i - 1) )* (i - 1);
+				rootedNum =rootedNum * 10 + (i-1) + (i-1);
+				result += (i-1).numerator;
+				break;
+			}
+		}
+		
+		remainder = remainder_num.numerator;
+		//r=
+	}
+	return result;
+}
+BigNumber root(const BigNumber& num) {
+	BigNumber rootNum(0);
+	rootNum.numerator= basicRoot(num.numerator);
+	rootNum.denominator = basicRoot(num.denominator);
+	rootNum.isInt = 0;
+	return rootNum;
 }
