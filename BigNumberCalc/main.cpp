@@ -13,10 +13,17 @@ void utility_test();
 void root_test();
 int main(int argc, char* argv[])
 {
+
 	auto start = chrono::steady_clock::now();
 	cout << factorial(BigNumber(100000)) << "\n\n";
 	auto end = chrono::steady_clock::now();
 	cout << chrono::duration_cast<chrono::milliseconds>(end - start).count();
+	// ( 1 + 2 ) * 3
+	// �I�I ��J�@�w�n��getline �I�I
+
+	for (string input; getline(cin, input);)
+		cout << convert(input) << '\n';
+
 	return 0;
 }
 void root_test() {
