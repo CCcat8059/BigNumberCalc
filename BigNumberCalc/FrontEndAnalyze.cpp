@@ -20,13 +20,15 @@ bool inputIsValid(std::string input)
 				dotFlag = true;
 			}
 		}
-		else if (isdigit(input[i]) || input[i] == ' ')
+		else if (isdigit(input[i]) )
+		{
+			continue;
+		}	
+		else if (isSymbol(input[i]) || input[i] == ' ')
 		{
 			dotNumber = 0;
 			continue;
-		}	
-		else if (isSymbol(input[i]))
-			continue;
+		}
 		else if (isalpha(input[i]))
 			alphaFlag = true;
 		else

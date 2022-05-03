@@ -34,6 +34,12 @@ BigNumber::BigNumber(const std::string num)
 		int pointPosition = numerator.find('.');
 		// if could not find '.' -> is int
 		isInt = (pointPosition == std::string::npos);
+		
+		// Warning information about the dot operation is used improper.
+		if (num[0] == '.' || num[num.size() - 1] == '.')
+		{
+			std::cout << "Warning: The number " << num << " is not satisfied with dot format, we ignore the dot." << std::endl;
+		}
 
 		// if is float
 		if (!isInt)
