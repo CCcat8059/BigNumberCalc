@@ -1,4 +1,5 @@
 #include <iostream>
+#include <chrono>
 
 #include "BigNumber.h"
 #include "FrontEndAnalyze.h"
@@ -12,7 +13,10 @@ void utility_test();
 void root_test();
 int main(int argc, char* argv[])
 {
-	root_test();
+	auto start = chrono::steady_clock::now();
+	cout << factorial(BigNumber(100000)) << "\n\n";
+	auto end = chrono::steady_clock::now();
+	cout << chrono::duration_cast<chrono::milliseconds>(end - start).count();
 	return 0;
 }
 void root_test() {
