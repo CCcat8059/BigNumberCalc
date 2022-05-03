@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
 
 	*/
 
-	cout << BigNumber("0") << '\n';
+	//cout << BigNumber("0") << '\n';
 	// Must use getline to get the input string.
 	for (string input; getline(cin, input);)
 		cout << convert(input) << '\n';
