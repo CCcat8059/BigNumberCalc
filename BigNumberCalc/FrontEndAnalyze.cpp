@@ -153,7 +153,7 @@ BigNumber convert(std::string infix)
 		return BigNumber();
 
 	infix = format(infix);
-	std::cout << "after format => " << infix << std::endl;
+	//std::cout << "after format => " << infix << std::endl;
 	std::stack<std::string> op;
 	std::stack<BigNumber> num;
 	std::stringstream ss;
