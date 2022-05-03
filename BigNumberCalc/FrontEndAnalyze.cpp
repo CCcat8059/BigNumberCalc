@@ -159,7 +159,6 @@ BigNumber convert(std::string infix)
 	std::stringstream ss;
 	std::string temp;
 	bool isSign = 0;
-	bool Sign = 0;
 	ss << infix;
 	while (ss.good())
 	{
@@ -170,19 +169,6 @@ BigNumber convert(std::string infix)
 		if (isBigNumber(temp))
 		{
 			isSign = 0;
-			if (Sign == 1)
-			{ // negative number
-				std::reverse(temp.begin(), temp.end());
-				temp += "-";
-				std::reverse(temp.begin(), temp.end());
-				Sign = 0;
-			}
-			else {
-				std::reverse(temp.begin(), temp.end());
-				temp += "+";
-				std::reverse(temp.begin(), temp.end());
-				Sign = 0;
-			}
 			BigNumber tempBN(temp);
 
 			num.push(tempBN);
