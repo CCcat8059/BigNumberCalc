@@ -34,7 +34,6 @@ bool inputIsValid(std::string input)
 	return true;
 }
 
-// std::cout << "Error: Input is invalid, using symbol of operation improper" << std::endl;
 std::string replace(std::string input)
 {
 	std::string output = "";
@@ -79,6 +78,7 @@ std::string format(std::string input)
 {
 	std::string output = replace(input);
 	int prevIndex = 0, nextIndex = 0;
+	bool warningFlag = 0;
 	while (nextIndex < output.size() && prevIndex < output.size())
 	{
 		if (output[prevIndex] == '+' || output[prevIndex] == '-')
@@ -93,28 +93,39 @@ std::string format(std::string input)
 				}
 				nextIndex++;
 			}
-			// ¤ÆÂ²
+			// Simplification
 			if (output[prevIndex] == '+' && output[nextIndex] == '+')
+			{
 				output[nextIndex] = ' ';
+				warningFlag = true;
+			}
+				
 			else if (output[prevIndex] == '+' && output[nextIndex] == '-')
 			{
 				output[prevIndex] = '-';
 				output[nextIndex] = ' ';
+				warningFlag = true;
 			}
 			else if (output[prevIndex] == '-' && output[nextIndex] == '+')
 			{
 				output[prevIndex] = '-';
 				output[nextIndex] = ' ';
+				warningFlag = true;
 			}
 			else if (output[prevIndex] == '-' && output[nextIndex] == '-')
 			{
 				output[prevIndex] = '+';
 				output[nextIndex] = ' ';
+				warningFlag = true;
 			}
 		}
 		else
 			prevIndex++;
 	}
+	if (warningFlag)
+		std::cout << "Warning: + or - the way you used may cause some incorrect answer, please add ( and ) in euqatin when you enter." << std::endl;
+	output = "( " + output;
+	output += " )";
 	return output;
 }
 
@@ -135,12 +146,14 @@ int priority(std::string alpha)
 	return 0;
 }
 
+// this algorithm please refer the README.md file.
 BigNumber convert(std::string infix)
 {
 	if (!inputIsValid(infix))
 		return BigNumber();
 
 	infix = format(infix);
+	std::cout << "after format => " << infix << std::endl;
 	std::stack<std::string> op;
 	std::stack<BigNumber> num;
 	std::stringstream ss;
@@ -161,6 +174,12 @@ BigNumber convert(std::string infix)
 			{ // negative number
 				std::reverse(temp.begin(), temp.end());
 				temp += "-";
+				std::reverse(temp.begin(), temp.end());
+				Sign = 0;
+			}
+			else {
+				std::reverse(temp.begin(), temp.end());
+				temp += "+";
 				std::reverse(temp.begin(), temp.end());
 				Sign = 0;
 			}
@@ -188,17 +207,20 @@ BigNumber convert(std::string infix)
 					}
 					else
 					{
-						if (op.size() < 2)
+						if (num.size() < 2)
 						{
 							std::cout << "Error: Input is invalid, using symbol of operation improper" << std::endl;
 							return BigNumber();
 						}
-						BigNumber a, b;
-						b = num.top();
-						num.pop();
-						a = num.top();
-						num.pop();
-						num.push(Caculate(a, b, op.top()));
+						else
+						{
+							BigNumber a, b;
+							b = num.top();
+							num.pop();
+							a = num.top();
+							num.pop();
+							num.push(Calculate(a, b, op.top()));
+						}
 					}
 					op.pop();
 				}
@@ -208,8 +230,15 @@ BigNumber convert(std::string infix)
 			{
 				// preSolve
 				// to judge is add and sub or positive and negative
-				if (isSign && temp != "+")
-					Sign = !Sign;
+				if (isSign)
+				{
+					if (temp == "+") {
+						Sign = 0;
+					}
+					else {
+						Sign = 1;
+					}
+				}
 				else
 				{
 					// is symbol of operation
@@ -224,7 +253,7 @@ BigNumber convert(std::string infix)
 						}
 						else
 						{
-							if (op.size() < 2)
+							if (num.size() < 2)
 							{
 								std::cout << "Error: Input is invalid, using symbol of operation improper" << std::endl;
 								return BigNumber();
@@ -234,7 +263,7 @@ BigNumber convert(std::string infix)
 							num.pop();
 							a = num.top();
 							num.pop();
-							num.push(Caculate(a, b, op.top()));
+							num.push(Calculate(a, b, op.top()));
 						}
 						op.pop();
 					}
@@ -255,7 +284,7 @@ BigNumber convert(std::string infix)
 		}
 		else
 		{
-			if (op.size() < 2)
+			if (num.size() < 2)
 			{
 				std::cout << "Error: Input is invalid, using symbol of operation improper" << std::endl;
 				return BigNumber();
@@ -265,13 +294,18 @@ BigNumber convert(std::string infix)
 			num.pop();
 			a = num.top();
 			num.pop();
-			num.push(Caculate(a, b, op.top()));
+			num.push(Calculate(a, b, op.top()));
 		}
 		op.pop();
 	}
+	
 	if (num.size() == 0)
 	{
 		std::cout << "Error: Input is empty." << std::endl;
+		return BigNumber();
+	}
+	else if (num.size() != 1) {
+		std::cout << "Error: Input is incorrect." << std::endl;
 		return BigNumber();
 	}
 	return num.top();
@@ -287,7 +321,7 @@ bool isBigNumber(std::string num)
 	return true;
 }
 
-BigNumber Caculate(const BigNumber& a, const BigNumber& b, std::string symbol)
+BigNumber Calculate(const BigNumber& a, const BigNumber& b, std::string symbol)
 {
 	BigNumber result;
 	if (symbol == "+")
@@ -300,9 +334,7 @@ BigNumber Caculate(const BigNumber& a, const BigNumber& b, std::string symbol)
 		result = a / b;
 	else if (symbol == "%")
 		result = a % b;
-
-	// -------------------------------
-	// ÁÙ¦³power
-	// -------------------------------
+	else if (symbol == "^")
+		result = power(a, b);
 	return result;
 }
