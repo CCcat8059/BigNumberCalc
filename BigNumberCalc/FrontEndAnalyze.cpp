@@ -230,14 +230,17 @@ BigNumber convert(std::string infix)
 			{
 				// preSolve
 				// to judge is add and sub or positive and negative
-				if (isSign)
+				if (isSign && temp == "+")
 				{
-					if (temp == "+") {
-						Sign = 0;
-					}
-					else {
-						Sign = 1;
-					}
+					BigNumber a(1);
+					op.push("*");
+					num.push(a);
+				}
+				else if (isSign && temp == "-") 
+				{
+					BigNumber a(-1);
+					op.push("*");
+					num.push(a);
 				}
 				else
 				{
