@@ -12,16 +12,19 @@ bool inputIsValid(std::string input)
 	// alpha or not symbol of operation is unacceptable.
 	for (int i = 0; i < input.size(); i++)
 	{
-		if (input[i] == '.') 
+		if (input[i] == '.')
 		{
 			dotNumber++;
-			if (dotNumber > 1) 
+			if (dotNumber > 1)
 			{
 				dotFlag = true;
 			}
 		}
 		else if (isdigit(input[i]) || input[i] == ' ')
+		{
+			dotNumber = 0;
 			continue;
+		}	
 		else if (isSymbol(input[i]))
 			continue;
 		else if (isalpha(input[i]))
