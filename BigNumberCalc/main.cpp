@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "BigNumber.h"
+#include "FrontEndAnalyze.h"
 
 using namespace std;
 void basic_test();
@@ -11,11 +12,6 @@ void utility_test();
 void root_test();
 int main(int argc, char* argv[])
 {
-	// basic_test();
-	// operator_test();
-	// relational_test();
-	// output_div_test();
-	//utility_test();
 	root_test();
 	return 0;
 }

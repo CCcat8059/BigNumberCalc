@@ -71,4 +71,4 @@ std::ostream& operator<<(std::ostream& os, BigNumber num)
 #endif // _DEBUG
 
 	return os;
-}
+} 

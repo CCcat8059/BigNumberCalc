@@ -6,6 +6,8 @@
 #include <iomanip>
 #include <string>
 #include <vector>
+#include <stack>
+#include <queue>
 class BigNumber
 {
 private:
@@ -78,6 +80,9 @@ public:
 	friend BigNumber factorial(const BigNumber&);
 	friend BigNumber root(const BigNumber&);
 	friend std::string basicRoot(std::string);
+	// type convert
+	friend BigNumber intToFloat(BigNumber);
+	friend BigNumber floatToInt(BigNumber);
 	// others
 	friend bool isValidPower(const BigNumber&);
 	friend void simplifyNum(BigNumber&);
