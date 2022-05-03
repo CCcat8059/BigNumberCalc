@@ -45,10 +45,23 @@ std::ostream& operator<<(std::ostream& os, BigNumber num)
 			while (remainder.size() < Dividend_tmp.size())
 				remainder = "0" + remainder;
 			Dividend.replace(i, Dividend_tmp.size(), remainder);
-			if(!(i==0&& quotient==0&& index_decimalStart!=1))
-				output += (char)(quotient + '0');
+			//if(!(i==0&& quotient==0&& index_decimalStart!=1))
+			output += (char)(quotient + '0');
 		}
 	}
+	
+	for (size_t i = 0; i < output.size(); i++)
+	{
+		if (output[i] == '0' && output[i + 1] != '.') {
+			output.erase(i, 1);
+		}
+		else
+		{
+			break;
+		}
+	}
+	
+	
 	os << output;
 
 #ifdef _DEBUG
