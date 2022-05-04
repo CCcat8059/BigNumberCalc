@@ -412,12 +412,22 @@ bool isCommand(std::string& input) {
 					equation += input[i];
 				}
 				if (type == "integer") {
-					var[variableName] = floatToInt(convert(equation));
-					std::cout << "The variable \" " << variableName << " \" assign " << var[variableName] << "." << std::endl;
+					if (inputIsValid(equation)) {
+						var[variableName] = floatToInt(convert(equation));
+						std::cout << "The variable \" " << variableName << " \" assign " << var[variableName] << "." << std::endl;
+					}
+					else {
+						std::cout << "Error: Input is incorrect." << std::endl;
+					}
 				}
 				else if (type == "decimal") {
-					var[variableName] = intToFloat(convert(equation));
-					std::cout << "The variable \" " << variableName << " \" assign " << var[variableName] << "." << std::endl;
+					if (inputIsValid(equation)) {
+						var[variableName] = intToFloat(convert(equation));
+						std::cout << "The variable \" " << variableName << " \" assign " << var[variableName] << "." << std::endl;
+					}
+					else {
+						std::cout << "Error: Input is incorrect." << std::endl;
+					}
 				}
 			}
 		}
@@ -490,8 +500,13 @@ bool isAssign(std::string input) {
 		for (int i = equalIndex + 1; i < input.size(); i++) {
 			equation += input[i];
 		}
-		var[target] = convert(equation);
-		std::cout << target << " = " << var[target] << std::endl;
+		if (inputIsValid(equation)) {
+			var[target] = convert(equation);
+			std::cout << target << " = " << var[target] << std::endl;
+		}
+		else {
+			std::cout << "Error: Input is incorrect." << std::endl;
+		}
 		return 1;
 	}
 }
