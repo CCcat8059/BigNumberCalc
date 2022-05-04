@@ -4,7 +4,7 @@ std::map<std::string, BigNumber> stores;
 
 bool nameIsValid(const std::string& name)
 {
-	if (name == "set" || name == "list")
+	if (name == "set" || name == "list" || name == "delete")
 		return false;
 	if (!isalpha(name[0]))
 		return false;
