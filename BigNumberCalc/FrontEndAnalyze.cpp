@@ -16,14 +16,12 @@ bool inputIsValid(std::string input)
 		{
 			dotNumber++;
 			if (dotNumber > 1)
-			{
 				dotFlag = true;
-			}
 		}
-		else if (isdigit(input[i]) )
+		else if (isdigit(input[i]))
 		{
 			continue;
-		}	
+		}
 		else if (isSymbol(input[i]) || input[i] == ' ')
 		{
 			dotNumber = 0;
@@ -41,7 +39,7 @@ bool inputIsValid(std::string input)
 
 		if (invalidSymbol)
 			std::cout << "Error: Input is invalid, using invalid symbol" << std::endl;
-		
+
 		if (dotFlag)
 			std::cout << "Error: Number of dot in input have more then one." << std::endl;
 		return false;
@@ -114,7 +112,7 @@ std::string format(std::string input)
 				output[nextIndex] = ' ';
 				warningFlag = true;
 			}
-				
+
 			else if (output[prevIndex] == '+' && output[nextIndex] == '-')
 			{
 				output[prevIndex] = '-';
@@ -180,7 +178,6 @@ BigNumber convert(std::string infix)
 		ss >> temp;
 		if (ss.fail())
 			break;
-
 		if (isBigNumber(temp))
 		{
 			isSign = 0;
@@ -237,15 +234,14 @@ BigNumber convert(std::string infix)
 					op.push("*");
 					num.push(a);
 				}
-				else if (isSign && temp == "-") 
+				else if (isSign && temp == "-")
 				{
 					BigNumber a(-1);
 					op.push("*");
 					num.push(a);
 				}
-				else
+				else	// is symbol of operation
 				{
-					// is symbol of operation
 					while (!op.empty() && priority(temp) <= priority(op.top()))
 					{
 						if (op.top() == "!")
@@ -302,7 +298,7 @@ BigNumber convert(std::string infix)
 		}
 		op.pop();
 	}
-	
+
 	if (num.size() == 0)
 	{
 		std::cout << "Error: Input is empty." << std::endl;

@@ -1,115 +1,66 @@
 #include <iostream>
-#include <chrono>
 
+#include "Variable.h"
 #include "BigNumber.h"
 #include "FrontEndAnalyze.h"
 
 using namespace std;
-void basic_test();
-void operator_test();
-void relational_test();
-void output_div_test();
-void utility_test();
-void root_test();
 int main(int argc, char* argv[])
-{
-
-	/*
-	auto start = chrono::steady_clock::now();
-	cout << factorial(BigNumber(1000)) << "\n\n";
-	auto end = chrono::steady_clock::now();
-	cout << chrono::duration_cast<chrono::milliseconds>(end - start).count();
-
-	*/
-
-	//cout << BigNumber("0") << '\n';
-	// Must use getline to get the input string.
-	for (string input; getline(cin, input);)
-		cout << convert(input) << '\n';
-
-	return 0;
-}
-void root_test() {
-	BigNumber floata("2.0");
-	BigNumber floatb("900000876543218000000000765432345673456");
-	cout << power(floata, BigNumber("2345.5")) << std::endl;
-	cout << root(floatb);
-}
-void basic_test()
-{
-	BigNumber inta("789");
-	BigNumber intb("+789");
-	BigNumber intc("-456");
-	cout << inta << '\n';
-	cout << intb << '\n';
-	cout << intc << '\n';
-
-	BigNumber floata("1234.123");
-	BigNumber floatb("+1234.123");
-	BigNumber floatc("-3456.789");
-	cout << floata << '\n';
-	cout << floatb << '\n';
-	cout << floatc << '\n';
-
-	BigNumber floatd("0.000123");
-	BigNumber floate("+0.000123");
-	BigNumber floatf("-0.789");
-	cout << floatd << '\n';
-	cout << floate << '\n';
-	cout << floatf << '\n';
-
-	BigNumber zeroa("0");
-	BigNumber zerob("+0");
-	BigNumber zeroc("-0");
-	cout << zeroa << '\n';
-	cout << zerob << '\n';
-	cout << zeroc << '\n';
-}
-void operator_test()
-{
-
-	BigNumber floata("3", "7"), floatb("1", "3");
-	cout << floata << endl;
-	cout << floatb << endl;
-	// cout << floata + floatb << endl;
-	cout << floata - floatb << endl;
-	cout << floatb - floata << endl;
-	// cout << floata * floatb << endl;
-	// cout << floata / floatb << endl;
-
-
-}
-void relational_test()
-{
-	BigNumber inta("1000"), intb("-1000");
-	BigNumber intc("100"), intd("-100");
-	cout << inta << " > " << intb << (inta > intb ? " yes" : " no") << '\n';
-	cout << inta << " > " << intc << (inta > intc ? " yes" : " no") << '\n';
-	cout << inta << " > " << intd << (inta > intd ? " yes" : " no") << '\n';
-
-	cout << intb << " > " << inta << (intb > inta ? " yes" : " no") << '\n';
-	cout << intb << " > " << intc << (intb > intc ? " yes" : " no") << '\n';
-	cout << intb << " > " << intd << (intb > intd ? " yes" : " no") << '\n';
-
-	cout << intc << " > " << inta << (intc > inta ? " yes" : " no") << '\n';
-	cout << intc << " > " << intb << (intc > intb ? " yes" : " no") << '\n';
-	cout << intc << " > " << intd << (intc > intd ? " yes" : " no") << '\n';
-
-	cout << intd << " > " << inta << (intd > inta ? " yes" : " no") << '\n';
-	cout << intd << " > " << intb << (intd > intb ? " yes" : " no") << '\n';
-	cout << intd << " > " << intc << (intd > intc ? " yes" : " no") << '\n';
-}
-void output_div_test()
-{
-	//BigNumber floata("101230", "1231233");
-	//BigNumber floata("22", "222");
-	BigNumber floata("10000", "3");
-	cout << floata;
-}
-void utility_test()
 {
 	for (string input; cin >> input;)
 	{
-		cout << factorial(BigNumber(input)) << '\n';
+		for (char& c : input)
+		{
+			if (isalpha(c))
+				c = tolower(c);
+		}
+		if (input == "set")
+		{
+			cout << "please input variable name: ";
+			string name, expression;
+			cin >> name;
+			if (!nameIsValid(name))
+			{
+				cout << "Error: the name is not valid.\n";
+				continue;
+			}
+			cout << "please input expression or number: ";
+			cin >> expression;
+			BigNumber temp(expression);
+			stores[name] = temp;
+		}
+		else if (input == "list")
+		{
+			for (const auto& s : stores)
+				cout << s.first << ' ' << s.second << '\n';
+		}
+		else if (input == "clear")
+		{
+			stores.clear();
+		}
+		else if (input == "delete")
+		{
+			if (stores.empty())
+			{
+				cout << "there's no variable can delete.\n";
+				continue;
+			}
+			cout << "please input variable name: ";
+			string name;
+			cin >> name;
+			auto iter = stores.find(name);
+			if (iter == stores.end())
+			{
+				cout << "the variable \"" << name << "\" can't be found.\n";
+				continue;
+			}
+			stores.erase(iter);
+			cout << "delete \"" << name << "\" successfully.\n";
+		}
+		else
+		{
+			cout << convert(input) << '\n';
+		}
 	}
+	return 0;
 }

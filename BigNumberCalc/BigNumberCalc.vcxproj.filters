@@ -39,12 +39,18 @@
     <ClCompile Include="FrontEndAnalyze.cpp">
       <Filter>來源檔案</Filter>
     </ClCompile>
+    <ClCompile Include="Variable.cpp">
+      <Filter>來源檔案</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BigNumber.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
     <ClInclude Include="FrontEndAnalyze.h">
+      <Filter>標頭檔</Filter>
+    </ClInclude>
+    <ClInclude Include="Variable.h">
       <Filter>標頭檔</Filter>
     </ClInclude>
   </ItemGroup>

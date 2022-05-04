@@ -42,6 +42,7 @@ public:
 	BigNumber operator*=(const BigNumber&);
 	BigNumber operator/=(const BigNumber&);
 	BigNumber operator%=(const BigNumber&);
+	BigNumber operator=(const std::string);
 
 
 	friend BigNumber operator+(const BigNumber&, const BigNumber&);
@@ -62,12 +63,13 @@ public:
 	friend bool operator<(const BigNumber&, const BigNumber&);
 	friend bool operator<=(const BigNumber&, const BigNumber&);
 
-	friend std::ostream& operator<<(std::ostream&, BigNumber);
+	friend std::ostream& operator<<(std::ostream&, const BigNumber&);
+	friend std::istream& operator>>(std::istream&, BigNumber&);
 #pragma endregion
 
 #pragma region utility
-	// for positive integers' basic operation
-	friend BigNumber basicAdd(const BigNumber&, const BigNumber&);
+		// for positive integers' basic operation
+		friend BigNumber basicAdd(const BigNumber&, const BigNumber&);
 	friend BigNumber basicSub(const BigNumber&, const BigNumber&);
 	friend BigNumber basicMul(const BigNumber&, const BigNumber&);
 	friend BigNumber basicDiv(const BigNumber&, const BigNumber&);
