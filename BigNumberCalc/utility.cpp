@@ -1,4 +1,5 @@
 #include "BigNumber.h"
+
 BigNumber basicAdd(const BigNumber& a, const BigNumber& b)
 {
 	// integer addition (++, +-, -+, --)
@@ -125,7 +126,7 @@ BigNumber basicDiv(const BigNumber& a, const BigNumber& b)
 	BigNumber result;
 	if (b.numerator == "0")
 	{
-		std::cout << "warning: division by zero.\n";
+		std::cout << "Warning: division by zero.\n";
 		return result;
 	}
 
@@ -208,7 +209,7 @@ BigNumber power(const BigNumber& base, const BigNumber& num)
 	BigNumber result(1);
 	if (!isValidPower(num))
 	{
-		std::cout << "warning: power must be integral multiple.\n";
+		std::cout << "Warning: power must be multiple of 0.5.\n";
 		return base;
 	}
 	BigNumber index(0);
@@ -240,12 +241,12 @@ BigNumber factorial(const BigNumber& num)
 {
 	if (!num.isInt)
 	{
-		std::cout << "warning: float can't do factorial.\n";
+		std::cout << "Warning: float can't do factorial.\n";
 		return BigNumber();
 	}
 	else if (num.sign)
 	{
-		std::cout << "warning: negative integer can't do factorial.\n";
+		std::cout << "Warning: negative integer can't do factorial.\n";
 		return BigNumber();
 	}
 	else if (num.numerator == "0" || num.numerator == "1")
@@ -297,18 +298,20 @@ void simplifyNum(BigNumber& num)
 	num.numerator = (numerator / GCD).numerator;
 	num.denominator = (denominator / GCD).numerator;
 }
-std::string basicRoot(std::string inpNum) {
+
+std::string basicRoot(std::string inpNum) 
+{
 	BigNumber rootedNum(0);
 	std::string remainder="";
 	std::string result = "";
-	if (inpNum.size() % 2 != 0) {
+	if (inpNum.size() % 2 != 0)
 		inpNum = '0' + inpNum;
-	}
+	
 	for (size_t i = 0; i < 100; i++)
-	{
 		inpNum = inpNum + "00";
-	}
-	for (int i = 0; i < inpNum.size(); i += 2) {
+	
+	for (int i = 0; i < inpNum.size(); i += 2) 
+	{
 		remainder += inpNum.substr(i, 2);
 		BigNumber remainder_num(remainder);
 		
@@ -322,13 +325,13 @@ std::string basicRoot(std::string inpNum) {
 				break;
 			}
 		}
-		
 		remainder = remainder_num.numerator;
-
 	}
 	return result;
 }
-BigNumber root(const BigNumber& num) {
+
+BigNumber root(const BigNumber& num) 
+{
 	BigNumber rootNum(0);
 	rootNum.numerator= basicRoot(num.numerator);
 	rootNum.denominator = basicRoot(num.denominator);

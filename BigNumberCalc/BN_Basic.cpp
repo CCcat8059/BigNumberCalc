@@ -1,4 +1,5 @@
 #include "BigNumber.h"
+#include "FrontEndAnalyze.h"
 
 BigNumber::BigNumber()
 {
@@ -11,6 +12,7 @@ BigNumber::BigNumber()
 
 BigNumber::BigNumber(const std::string num)
 {
+
 	// avoid empty string
 	if (num.empty())
 	{
@@ -19,7 +21,7 @@ BigNumber::BigNumber(const std::string num)
 		numerator = "0";
 		denominator = "1";
 	}
-	else
+	else if(isBigNumber(num))
 	{
 		sign = false;
 		numerator = num;
@@ -62,6 +64,10 @@ BigNumber::BigNumber(const std::string num)
 
 		if (sign && numerator == "0") // -0
 			sign = false;
+	}
+	else
+	{
+		*this = convert(num);
 	}
 	if (!isInt)
 		simplifyNum(*this);
