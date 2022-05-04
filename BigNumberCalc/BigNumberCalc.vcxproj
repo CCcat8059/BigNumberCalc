@@ -147,10 +147,12 @@
     <ClCompile Include="FrontEndAnalyze.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="utility.cpp" />
+    <ClCompile Include="Variable.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BigNumber.h" />
     <ClInclude Include="FrontEndAnalyze.h" />
+    <ClInclude Include="Variable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

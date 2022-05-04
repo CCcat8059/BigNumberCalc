@@ -33,9 +33,16 @@ BigNumber BigNumber::operator/=(const BigNumber& num)
 	*this = (*this) / num;
 	return *this;
 }
+
 BigNumber BigNumber::operator%=(const BigNumber& num)
 {
 	*this = (*this) % num;
+	return *this;
+}
+
+BigNumber BigNumber::operator=(const std::string input)
+{
+	*this = BigNumber(input);
 	return *this;
 }
 #pragma endregion

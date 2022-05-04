@@ -1,4 +1,5 @@
 #include "BigNumber.h"
+#include "FrontEndAnalyze.h"
 
 BigNumber::BigNumber()
 {
@@ -11,6 +12,7 @@ BigNumber::BigNumber()
 
 BigNumber::BigNumber(const std::string num)
 {
+
 	// avoid empty string
 	if (num.empty())
 	{
@@ -19,7 +21,7 @@ BigNumber::BigNumber(const std::string num)
 		numerator = "0";
 		denominator = "1";
 	}
-	else
+	else if(isBigNumber(num))
 	{
 		sign = false;
 		numerator = num;
@@ -34,6 +36,12 @@ BigNumber::BigNumber(const std::string num)
 		int pointPosition = numerator.find('.');
 		// if could not find '.' -> is int
 		isInt = (pointPosition == std::string::npos);
+		
+		// Warning information about the dot operation is used improper.
+		if (num[0] == '.' || num[num.size() - 1] == '.')
+		{
+			std::cout << "Warning: The number " << num << " is not satisfied with dot format, we ignore the dot." << std::endl;
+		}
 
 		// if is float
 		if (!isInt)
@@ -56,6 +64,10 @@ BigNumber::BigNumber(const std::string num)
 
 		if (sign && numerator == "0") // -0
 			sign = false;
+	}
+	else
+	{
+		*this = convert(num);
 	}
 	if (!isInt)
 		simplifyNum(*this);
