@@ -13,23 +13,17 @@ void utility_test();
 void root_test();
 int main(int argc, char* argv[])
 {
-
 	/*
 	auto start = chrono::steady_clock::now();
 	cout << factorial(BigNumber(1000)) << "\n\n";
 	auto end = chrono::steady_clock::now();
 	cout << chrono::duration_cast<chrono::milliseconds>(end - start).count();
-
 	*/
-
-	//cout << BigNumber("0") << '\n';
-	// Must use getline to get the input string.
-	for (string input; getline(cin, input);)
-		cout << convert(input) << '\n';
-
+	for (BigNumber input; cin >> input; cout << input << '\n');
 	return 0;
 }
-void root_test() {
+void root_test() 
+{
 	BigNumber floata("2.0");
 	BigNumber floatb("900000876543218000000000765432345673456");
 	cout << power(floata, BigNumber("2345.5")) << std::endl;
