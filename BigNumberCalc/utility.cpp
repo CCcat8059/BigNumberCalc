@@ -323,7 +323,8 @@ std::string basicRoot(std::string inpNum)
 		for (BigNumber i(0); i <= 10; i++)
 		{
 			//std::cout << ((rootedNum * 10) + i) * i << " , " << remainder_num << " , " << i << '\n';
-			if (((rootedNum * 10) + i) * i > remainder_num) {
+			if (((rootedNum * 10) + i) * i > remainder_num) 
+			{
 				remainder_num = remainder_num - (rootedNum * 10 + (i - 1)) * (i - 1);
 				rootedNum = rootedNum * 10 + (i - 1) + (i - 1);
 				result += (i - 1).numerator;
