@@ -313,16 +313,11 @@ BigNumber convert(std::string infix)
 
 bool isBigNumber(std::string num)
 {
-	int dot(0);
 	for (int i = 0; i < num.size(); i++)
 	{
-		if (!isdigit(num[i]))	// isn't digit or '.'
+		if (!(isdigit(num[i]) || num[i] == '.'))	// isn't digit or '.'
 			return false;
-		else if (num[i] == '.')
-			dot++;
 	}
-	if (dot > 1)
-		return false;
 	return true;
 }
 
