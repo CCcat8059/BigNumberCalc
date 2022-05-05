@@ -206,34 +206,39 @@ BigNumber lcm(const BigNumber& a, const BigNumber& b)
 BigNumber power(const BigNumber& base, const BigNumber& num)
 {
 	// only for base ^ (0.5 * n) and n is integer
-	BigNumber result(1);
 	if (!isValidPower(num))
 	{
 		std::cout << "Warning: power must be multiple of 0.5.\n";
 		return base;
 	}
-	BigNumber index(0);
-	BigNumber num_int = basicDiv(BigNumber(num.numerator), BigNumber(num.denominator));
-	
-	while (num_int > index)
+
+	BigNumber num_int = floatToInt(num);
+	bool isNeedRoot = abs(num) - num_int == BigNumber("0.5");
+	if (base.sign && isNeedRoot)
 	{
-		result = result * base;
-		index++;
+		std::cout << "Warning: negative number can't do sqrt.\n";
+		return base;
 	}
 
-	//std::cout << result << '\n';
-	if (abs(num)- index == BigNumber("0.5")) {
-		result = result * root(base);
+	// Binary Exponentiation
+	BigNumber result("1");
+	for (BigNumber timesBase(base); num_int != 0; num_int /= 2, timesBase *= timesBase)
+	{
+		if (num_int % 2 == 1)
+			result *= timesBase;
 	}
-	//std::cout << result << '\n';
-	if (num.sign==1) {
+
+	if (isNeedRoot)
+		result = result * root(base);
+
+	if (num.sign)
+	{
 		std::string temp = result.numerator;
 		result.numerator = result.denominator;
 		result.denominator = temp;
 		if (result.denominator != "1")
 			result.isInt = 0;
 	}
-
 	return result;
 }
 
@@ -300,29 +305,30 @@ void simplifyNum(BigNumber& num)
 	num.denominator = (denominator / GCD).numerator;
 }
 
-std::string basicRoot(std::string inpNum) 
+std::string basicRoot(std::string inpNum)
 {
 	BigNumber rootedNum(0);
-	std::string remainder="";
+	std::string remainder = "";
 	std::string result = "";
 	if (inpNum.size() % 2 != 0)
 		inpNum = '0' + inpNum;
-	
+
 	for (size_t i = 0; i < 100; i++)
 		inpNum = inpNum + "00";
-	
-	for (int i = 0; i < inpNum.size(); i += 2) 
+
+	for (int i = 0; i < inpNum.size(); i += 2)
 	{
 		remainder += inpNum.substr(i, 2);
 		BigNumber remainder_num(remainder);
-		
+
 		for (BigNumber i(0); i <= 10; i++)
 		{
 			//std::cout << ((rootedNum * 10) + i) * i << " , " << remainder_num << " , " << i << '\n';
-			if (((rootedNum * 10) + i) * i > remainder_num) {
-				remainder_num = remainder_num - (rootedNum * 10 + (i - 1) )* (i - 1);
-				rootedNum =rootedNum * 10 + (i-1) + (i-1);
-				result += (i-1).numerator;
+			if (((rootedNum * 10) + i) * i > remainder_num) 
+			{
+				remainder_num = remainder_num - (rootedNum * 10 + (i - 1)) * (i - 1);
+				rootedNum = rootedNum * 10 + (i - 1) + (i - 1);
+				result += (i - 1).numerator;
 				break;
 			}
 		}
@@ -331,10 +337,10 @@ std::string basicRoot(std::string inpNum)
 	return result;
 }
 
-BigNumber root(const BigNumber& num) 
+BigNumber root(const BigNumber& num)
 {
 	BigNumber rootNum(0);
-	rootNum.numerator= basicRoot(num.numerator);
+	rootNum.numerator = basicRoot(num.numerator);
 	rootNum.denominator = basicRoot(num.denominator);
 	rootNum.isInt = 0;
 	return rootNum;
