@@ -511,7 +511,11 @@ bool isAssign(std::string input) {
 			equation += input[i];
 		}
 		if (inputIsValid(equation)) {
-			var[target] = convert(equation);
+			if(var[target].getType())	// 1: int
+				var[target] = floatToInt(convert(equation));
+			else	// 0: float
+				var[target] = intToFloat(convert(equation));
+
 			std::cout << target << " = " << var[target] << std::endl;
 		}
 		else {
