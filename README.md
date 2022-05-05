@@ -119,11 +119,21 @@ return gcd
 ### lcm
 return lcm
 ### power
-return base ^ num  
-TODO
+return base ^ num
 ### factorial
 return num!
 ### isValidPower
 return if the power number valid (0.5 * n and n is integer)
 ### simplifyNum
 make num be irreducible fraction (3/6 -> 1/2)
+
+
+# FrontEndAnalyze
+## convert
+
+
+# Variable
+## stores
+store all variable that user create
+## nameIsValid
+return the variable name is valid or not

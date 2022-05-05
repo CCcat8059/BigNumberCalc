@@ -275,6 +275,7 @@ BigNumber intToFloat(BigNumber num)
 BigNumber floatToInt(BigNumber num)
 {
 	BigNumber temp = BigNumber(num.numerator) / BigNumber(num.denominator);
+	temp.sign = num.sign;
 	return temp;
 }
 
