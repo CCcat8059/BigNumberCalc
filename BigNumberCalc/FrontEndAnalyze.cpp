@@ -593,7 +593,7 @@ bool isEquation(std::string input)
 	}
 	if (operatorNum > 1)	// 1+1+1
 		return true;
-	else if (operatorNum == 1 && (input[0] != '+' || input[0] != '-'))	// 1+1
+	else if (operatorNum == 1 && (input[0] != '+' && input[0] != '-'))	// 1+1
 		return true;
 	return false;
 }
