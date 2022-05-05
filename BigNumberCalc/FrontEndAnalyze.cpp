@@ -549,6 +549,19 @@ bool isVariableNameValid(std::string name) {
 }
 
 bool isEquationValid(std::string input) {
+	int pairNum(0);
+	for (int i = 0; i < input.size(); i++)
+	{
+		if (input[i] == '(')
+			pairNum++;
+		else if (input[i] == ')')
+			pairNum--;
+		if (pairNum < 0)
+			return false;
+	}
+	if (pairNum != 0)
+		return false;
+
 	std::stringstream ss;
 	ss << input;
 
