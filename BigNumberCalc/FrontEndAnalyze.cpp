@@ -271,6 +271,11 @@ BigNumber convert(std::string infix)
 					{
 						if (op.top() == "!")
 						{
+							if (num.empty())
+							{
+								std::cout << "Error: Input is invalid, using symbol of operation improper" << std::endl;
+								return BigNumber();
+							}
 							BigNumber a;
 							a = factorial(num.top());
 							num.pop();
@@ -302,6 +307,11 @@ BigNumber convert(std::string infix)
 	{
 		if (op.top() == "!")
 		{
+			if (num.empty())
+			{
+				std::cout << "Error: Input is invalid, using symbol of operation improper" << std::endl;
+				return BigNumber();
+			}
 			BigNumber a;
 			a = factorial(num.top());
 			num.pop();
