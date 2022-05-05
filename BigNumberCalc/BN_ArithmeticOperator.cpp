@@ -111,6 +111,11 @@ BigNumber operator/(const BigNumber& a, const BigNumber& b)
 		BigNumber a1(a.numerator), a2(a.denominator), b1(b.numerator), b2(b.denominator);
 		result.numerator = (a1 * b2).numerator;
 		result.denominator = (a2 * b1).numerator;
+		if (result.denominator == "0")
+		{
+			std::cout << "Warning: division by zero.\n";
+			return BigNumber();
+		}
 		result.isInt = 0;
 		simplifyNum(result);
 	}
