@@ -53,3 +53,6 @@ bool isVariableNameValid(std::string);
 
 // check the equation is valid or not
 bool isEquationValid(std::string);
+
+// check is equation or not
+bool isEquation(std::string);

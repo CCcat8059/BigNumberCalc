@@ -12,7 +12,6 @@ BigNumber::BigNumber()
 
 BigNumber::BigNumber(const std::string num)
 {
-
 	// avoid empty string
 	if (num.empty())
 	{
@@ -20,6 +19,10 @@ BigNumber::BigNumber(const std::string num)
 		isInt = true;
 		numerator = "0";
 		denominator = "1";
+	}
+	else if (isEquation(num))
+	{
+		*this = convert(format(num));
 	}
 	else
 	{
