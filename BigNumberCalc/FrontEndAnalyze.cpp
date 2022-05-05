@@ -587,7 +587,8 @@ bool isEquationValid(std::string input) {
 		}
 		ss >> s2;
 		if (s1 == "(") {
-			if (isSymbol(s2[0]) && (s2 != "+" && s2 != "-")) {
+			//std::cout << "Q" << std::endl;
+			if (isSymbol(s2[0]) && (s2 != "+" && s2 != "-" && s2 != "(")) {
 				return 0;
 			}
 		}
