@@ -23,10 +23,12 @@ private:
 	// false -> float, true -> int
 	bool isInt;
 public:
+	bool getType() { return isInt; };
+
 #pragma region Constructor
 	BigNumber();
 	// create an object from single number
-	
+
 	BigNumber(const BigNumber&);
 	BigNumber(const short&);
 	BigNumber(const int&);
@@ -70,8 +72,8 @@ public:
 #pragma endregion
 
 #pragma region utility
-		// for positive integers' basic operation
-		friend BigNumber basicAdd(const BigNumber&, const BigNumber&);
+	// for positive integers' basic operation
+	friend BigNumber basicAdd(const BigNumber&, const BigNumber&);
 	friend BigNumber basicSub(const BigNumber&, const BigNumber&);
 	friend BigNumber basicMul(const BigNumber&, const BigNumber&);
 	friend BigNumber basicDiv(const BigNumber&, const BigNumber&);

@@ -212,7 +212,7 @@ BigNumber power(const BigNumber& base, const BigNumber& num)
 		return base;
 	}
 
-	BigNumber num_int = floatToInt(num);
+	BigNumber num_int = abs(floatToInt(num));
 	bool isNeedRoot = abs(num) - num_int == BigNumber("0.5");
 	if (base.sign && isNeedRoot)
 	{
