@@ -130,4 +130,19 @@ make num be irreducible fraction (3/6 -> 1/2)
 
 # FrontEndAnalyze
 ## convert
-
+infix to postfix and check equation is valid or not
+## set
+### integer
+[variable name]=[number or expression]
+### decimal
+[variable name]=[number or expression]
+### get
+[variable name]  
+get variable
+### delete
+[variable name]  
+delete variable
+### list
+list all variable and it's value
+### clear
+clear all variable
