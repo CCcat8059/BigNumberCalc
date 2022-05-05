@@ -48,7 +48,7 @@ bool inputIsValid(std::string input)
 		else
 			invalidSymbol = true;
 	}
-	if (varNotExistFlag ||invalidSymbol || dotFlag)
+	if (varNotExistFlag || invalidSymbol || dotFlag)
 	{
 		//if (varNotExistFlag)
 		//	std::cout << "Error: Input is invalid, using alpha." << std::endl;
@@ -189,11 +189,11 @@ BigNumber convert(std::string infix)
 	ss << infix;
 	while (ss.good())
 	{
-		
+
 		ss >> temp;
 		if (ss.fail())
 			break;
-		
+
 		if (isBigNumber(temp))
 		{
 			isSign = 0;
@@ -214,7 +214,7 @@ BigNumber convert(std::string infix)
 			}
 			else if (temp == ")")
 			{
-				if (op.empty()) 
+				if (op.empty())
 				{
 					std::cout << "Error: Input is invalid, using symbol of operation improper" << std::endl;
 					return BigNumber();
@@ -375,7 +375,6 @@ bool isVariable(std::string str) {
 	return 0;
 }
 
-
 bool isCommand(std::string& input) {
 
 	int equalIndex = -1;
@@ -459,7 +458,7 @@ bool isCommand(std::string& input) {
 	}
 	else if (command == "list") {
 		if (!var.empty())
-			for (const auto& val : var) 
+			for (const auto& val : var)
 				std::cout << val.first << " " << val.second << std::endl;
 		else
 		{
@@ -474,6 +473,7 @@ bool isCommand(std::string& input) {
 	else
 		return 0;
 }
+
 bool isAssign(std::string input) {
 	int equalIndex = -1;
 	for (int i = 0; i < input.size(); i++) {
@@ -510,12 +510,13 @@ bool isAssign(std::string input) {
 		return 1;
 	}
 }
+
 void init(std::string input)
 {
 	input = format(input);
 	//std::cout << "after format = " << input << std::endl;
 
-	if (isCommand(input)) 
+	if (isCommand(input))
 	{
 		// if is doing the command then continue;
 		return;
@@ -534,10 +535,8 @@ void init(std::string input)
 	else {
 		std::cout << "Error: Input is incorrect." << std::endl;
 	}
-	
+
 }
-
-
 
 bool isVariableNameValid(std::string name) {
 	for (int i = 0; i < name.size(); i++) {
@@ -582,4 +581,19 @@ bool isEquationValid(std::string input) {
 		}
 	}
 	return 1;
+}
+
+bool isEquation(std::string input)
+{
+	int operatorNum(0);
+	for (int i = 0; i < input.size(); i++)
+	{
+		if (isSymbol(input[i]))
+			operatorNum++;
+	}
+	if (operatorNum > 1)	// 1+1+1
+		return true;
+	else if (operatorNum == 1 && (input[0] != '+' || input[0] != '-'))	// 1+1
+		return true;
+	return false;
 }
