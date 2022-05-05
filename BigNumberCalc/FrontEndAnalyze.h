@@ -30,3 +30,29 @@ bool isBigNumber(std::string);
 // 計算兩數和一個運算符號
 // Calculate two number and one symbol of operation.
 BigNumber Calculate(const BigNumber&, const BigNumber&, std::string symbol);
+
+// check the input string is exist or not.
+bool isVariable(std::string);
+
+// 儲存變數
+// store the variables
+static std::map<std::string, BigNumber> var;
+
+//check is commond or not and do
+bool isCommand(std::string&);
+
+// initialize
+void init(std::string);
+
+
+// Assign string, like a = b + c.
+bool isAssign(std::string);
+
+// check the variable name is valid or not.
+bool isVariableNameValid(std::string);
+
+// check the equation is valid or not
+bool isEquationValid(std::string);
+
+// check is equation or not
+bool isEquation(std::string);

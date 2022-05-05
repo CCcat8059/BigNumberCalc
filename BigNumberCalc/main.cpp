@@ -1,66 +1,29 @@
+// Project: 
+//		110-2 Project1 大數計算機 BigNumberCalculator
+// 
+// Contributors: 
+//		B11015034 林信佑 (CCcat134312)
+//		B11015030 張睿麟 (jovi920204)
+//		B11030232 孫文浩 (haha4mela)
+// 
+// Github URL: 
+//		https://github.com/CCcat134312/BigNumberCalc
+// 
+// Date: 
+//		2022/04/19
+// 
+// Last Update: 
+//		2022/05/05
 #include <iostream>
 
-#include "Variable.h"
 #include "BigNumber.h"
 #include "FrontEndAnalyze.h"
 
 using namespace std;
 int main(int argc, char* argv[])
 {
-	for (string input; cin >> input;)
-	{
-		for (char& c : input)
-		{
-			if (isalpha(c))
-				c = tolower(c);
-		}
-		if (input == "set")
-		{
-			cout << "please input variable name: ";
-			string name, expression;
-			cin >> name;
-			if (!nameIsValid(name))
-			{
-				cout << "Error: the name is not valid.\n";
-				continue;
-			}
-			cout << "please input expression or number: ";
-			cin >> expression;
-			BigNumber temp(expression);
-			stores[name] = temp;
-		}
-		else if (input == "list")
-		{
-			for (const auto& s : stores)
-				cout << s.first << ' ' << s.second << '\n';
-		}
-		else if (input == "clear")
-		{
-			stores.clear();
-		}
-		else if (input == "delete")
-		{
-			if (stores.empty())
-			{
-				cout << "there's no variable can delete.\n";
-				continue;
-			}
-			cout << "please input variable name: ";
-			string name;
-			cin >> name;
-			auto iter = stores.find(name);
-			if (iter == stores.end())
-			{
-				cout << "the variable \"" << name << "\" can't be found.\n";
-				continue;
-			}
-			stores.erase(iter);
-			cout << "delete \"" << name << "\" successfully.\n";
-		}
-		else
-		{
-			cout << convert(input) << '\n';
-		}
-	}
+	string input;
+	while (getline(cin, input))
+		init(input);
 	return 0;
 }

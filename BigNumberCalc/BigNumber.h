@@ -8,6 +8,7 @@
 #include <vector>
 #include <stack>
 #include <queue>
+#include <map>
 class BigNumber
 {
 private:
@@ -25,12 +26,13 @@ public:
 #pragma region Constructor
 	BigNumber();
 	// create an object from single number
-	BigNumber(const std::string);
+	
 	BigNumber(const BigNumber&);
 	BigNumber(const short&);
 	BigNumber(const int&);
 	BigNumber(const long long&);
 	BigNumber(const double&);
+	BigNumber(const std::string);
 	// create an object from numerator and denominator
 	BigNumber(std::string, std::string);
 #pragma endregion

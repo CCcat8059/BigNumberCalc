@@ -74,7 +74,7 @@ std::ostream& operator<<(std::ostream& os, const BigNumber& num)
 std::istream& operator>>(std::istream& is, BigNumber& num)
 {
 	std::string inputTemp;
-	std::getline(is, inputTemp);
+	is >> inputTemp;
 	num = BigNumber(inputTemp);
 	return is;
 }
